@@ -2,8 +2,8 @@
 
 [x] Revision of core concepts   
 [x] Interview coding patterns 
-[ ] Problem-solving strategies  
-[ ] Mock coding discussion 
+[x] Problem-solving strategies  
+[x] Mock coding discussion 
 [ ] Coding optimization techniques
 [x] Complexity analysis revision           
 

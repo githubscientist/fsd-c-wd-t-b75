@@ -1,0 +1,120 @@
+sathish@sathishs-MacBook-Pro fsd-c-wd-t-b75 % mysql
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 8.4.9 Homebrew
+
+Copyright (c) 2000, 2026, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| besqlnotesdb       |
+| eshopdb            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+6 rows in set (0.07 sec)
+
+mysql> create database ecommerce;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| besqlnotesdb       |
+| ecommerce          |
+| eshopdb            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+7 rows in set (0.01 sec)
+
+mysql> drop database ecommerce;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| besqlnotesdb       |
+| eshopdb            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> create database ecommerce;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| besqlnotesdb       |
+| ecommerce          |
+| eshopdb            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+7 rows in set (0.00 sec)
+
+mysql> select database();
++------------+
+| database() |
++------------+
+| NULL       |
++------------+
+1 row in set (0.00 sec)
+
+mysql> use ecommerce;
+Database changed
+mysql> select database();
++------------+
+| database() |
++------------+
+| ecommerce  |
++------------+
+1 row in set (0.00 sec)
+
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql> create table products (id int, name char(20),price double, quantity int); 
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> show tables;
++---------------------+
+| Tables_in_ecommerce |
++---------------------+
+| products            |
++---------------------+
+1 row in set (0.01 sec)
+
+mysql> describe products;
++----------+----------+------+-----+---------+-------+
+| Field    | Type     | Null | Key | Default | Extra |
++----------+----------+------+-----+---------+-------+
+| id       | int      | YES  |     | NULL    |       |
+| name     | char(20) | YES  |     | NULL    |       |
+| price    | double   | YES  |     | NULL    |       |
+| quantity | int      | YES  |     | NULL    |       |
++----------+----------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> 

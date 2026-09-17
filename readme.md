@@ -4,7 +4,7 @@
 [x] Interview coding patterns 
 [x] Problem-solving strategies  
 [x] Mock coding discussion 
-[ ] Coding optimization techniques
+[x] Coding optimization techniques
 [x] Complexity analysis revision           
 
 Interviews:
@@ -30,3 +30,88 @@ Product based companies vs Service based companies
     3. Round 3: HR Interview
 - Package: approx 3 LPA - 10 LPA
 
+# DBMS Fundamentals & MySQL Basics
+
+[x] Introduction to DBMS
+[x] Relational vs Non-Relational Databases
+[x] Database architecture basics
+[x] MySQL installation & setup
+[ ] Tables, rows & columns
+[ ] Creating databases & tables
+
+Database is a collection of data
+    - data can be in the form of either:
+        - Structured data (organized in tables, rows, and columns)
+        - Unstructured data (text, images, videos, etc)
+
+Relational databases store structured data in tables with predefined schemas, while non-relational databases can store unstructured or semi-structured data(examples: MongoDB, Cassandra, etc)
+
+Memory:
+    1. Primary Memory 
+        - Volatile memory (RAM) - Random Access Memory
+        - Volatile memory loses its content when the power is turned off
+    2. Secondary Memory
+        - Non-volatile memory (HDD, SSD) - Hard Disk Drive, Solid State Drive, Pen drives, SD cards, etc
+        - Non-volatile memory retains its content even when the power is turned off
+
+Databases uses secondary storage to persist data, ensuring that the data remains available even after the system is powered off.
+
+Data stored in the database is organized in the form of files.
+    - Each file contains a collection of related data, typically corresponding to a table in a relational database.
+    - Files are managed (Read, Write, Update, Delete) by the database management system (DBMS) to ensure data integrity and efficient access.
+
+Database Management System(DBMS):
+    - A software system that enables users to define, create, maintain, and control access to databases.
+    - Examples: MySQL, PostgreSQL, Oracle, SQL Server, MongoDB, Cassandra, SQLite, MariaDB, Elasticsearch, etc.
+    - Responsibilities:
+        - Data definition: Defining the structure of the database, including tables, columns, and relationships.
+        - Data manipulation: Inserting, updating, deleting, and querying data.
+        - Data security: Controlling access to the database and ensuring data privacy.
+        - Data integrity: Enforcing rules to maintain the accuracy and consistency of data.
+        - Backup and recovery: Ensuring data is backed up and can be restored in case of failure.
+
+Database Architecture
+    - It follows a layered architecture, typically including:
+        1. Presentation Layer: The user interface that interacts with the end-users.
+        2. Application Layer: The business logic and application processing.
+        3. Data Layer: The database and storage management, where the DBMS operates.
+        4. Physical Layer: The actual physical storage of data on hardware devices like HDDs and SSDs.
+    - Every DBMS provides a client server architecture, where the client interacts with the database through the DBMS, and the server manages the actual data storage and processing.
+
+API: (Application Programming Interface)
+
+To speak with the database servers, we need an API (Application Programming Interface) that allows our application to send queries and receive responses from the database. (Software clients)
+
+We use languages like SQL (Structured Query Language) to interact with relational databases, and various query languages or APIs provided by non-relational databases (e.g., MongoDB's query language) to perform operations on the data.
+
+Relational Vs Non-Relational Databases
+
+Relational Databases:
+    - Use structured schema with tables, rows, and columns.
+    - Data is accessed using SQL.
+    - Examples: MySQL, PostgreSQL, Oracle, SQL Server.
+
+Non-Relational Databases:
+    - Use flexible schema, often document, key-value, column-family, or graph-based.
+    - Data is accessed using various query languages or APIs.
+    - Examples: MongoDB, Cassandra, Redis, Neo4j.
+
+SQL (Structured Query Language):
+
+- The instructions will be in the form of SQL statements or queries that the database understands.
+- We have sublanguages within SQL, such as:
+    - DDL (Data Definition Language)
+        - CREATE, ALTER, DROP statements.
+    - DML (Data Manipulation Language)
+        - INSERT, UPDATE, DELETE statements.
+    - DQL (Data Query Language)
+        - SELECT statements.
+    - DCL (Data Control Language)
+        - GRANT, REVOKE statements.
+    - DTL (Data Transaction Language)
+        - COMMIT, ROLLBACK, SAVEPOINT statements.
+
+Schema: 
+    - The structure that defines how data is organized in the database.
+    - Includes tables, columns, data types, relationships, and constraints.
+    - Helps ensure data integrity and consistency.

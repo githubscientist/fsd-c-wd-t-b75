@@ -118,3 +118,908 @@ mysql> describe products;
 4 rows in set (0.01 sec)
 
 mysql> 
+mysql> use ecommerce;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> select database();
++------------+
+| database() |
++------------+
+| ecommerce  |
++------------+
+1 row in set (0.00 sec)
+
+mysql> use company_db;
+Database changed
+mysql> drop database ecommerce;
+Query OK, 1 row affected (0.03 sec)
+
+mysql> show tables;
+Empty set (0.01 sec)
+
+mysql> create table departments (
+    -> department_id int,
+    -> department_name varchar(50),
+    -> location varchar(50)
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> show tales;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'tales' at line 1
+mysql> show tables;
++----------------------+
+| Tables_in_company_db |
++----------------------+
+| departments          |
++----------------------+
+1 row in set (0.01 sec)
+
+mysql> describe departments;
++-----------------+-------------+------+-----+---------+-------+
+| Field           | Type        | Null | Key | Default | Extra |
++-----------------+-------------+------+-----+---------+-------+
+| department_id   | int         | YES  |     | NULL    |       |
+| department_name | varchar(50) | YES  |     | NULL    |       |
+| location        | varchar(50) | YES  |     | NULL    |       |
++-----------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> insert into departments 
+    -> values
+    -> (1, 'Engineering', 'Chennai');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from departments;
++---------------+-----------------+----------+
+| department_id | department_name | location |
++---------------+-----------------+----------+
+|             1 | Engineering     | Chennai  |
++---------------+-----------------+----------+
+1 row in set (0.01 sec)
+
+mysql> INSERT INTO departments
+    -> VALUES
+    -> (1, 'Engineering', 'Chennai'),
+    -> (2, 'HR', 'Coimbatore'),
+    -> (3, 'Finance', 'Bangalore'),
+    -> (4, 'Sales', 'Hyderabad');
+Query OK, 4 rows affected (0.01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select * from departments;
++---------------+-----------------+------------+
+| department_id | department_name | location   |
++---------------+-----------------+------------+
+|             1 | Engineering     | Chennai    |
+|             1 | Engineering     | Chennai    |
+|             2 | HR              | Coimbatore |
+|             3 | Finance         | Bangalore  |
+|             4 | Sales           | Hyderabad  |
++---------------+-----------------+------------+
+5 rows in set (0.00 sec)
+
+mysql> select department_name from departments;
++-----------------+
+| department_name |
++-----------------+
+| Engineering     |
+| Engineering     |
+| HR              |
+| Finance         |
+| Sales           |
++-----------------+
+5 rows in set (0.00 sec)
+
+mysql> select department_name, location from departments;
++-----------------+------------+
+| department_name | location   |
++-----------------+------------+
+| Engineering     | Chennai    |
+| Engineering     | Chennai    |
+| HR              | Coimbatore |
+| Finance         | Bangalore  |
+| Sales           | Hyderabad  |
++-----------------+------------+
+5 rows in set (0.01 sec)
+
+mysql> select departments;
+ERROR 1054 (42S22): Unknown column 'departments' in 'field list'
+mysql> select * from departments;
++---------------+-----------------+------------+
+| department_id | department_name | location   |
++---------------+-----------------+------------+
+|             1 | Engineering     | Chennai    |
+|             1 | Engineering     | Chennai    |
+|             2 | HR              | Coimbatore |
+|             3 | Finance         | Bangalore  |
+|             4 | Sales           | Hyderabad  |
++---------------+-----------------+------------+
+5 rows in set (0.00 sec)
+
+mysql> describe departments;
++-----------------+-------------+------+-----+---------+-------+
+| Field           | Type        | Null | Key | Default | Extra |
++-----------------+-------------+------+-----+---------+-------+
+| department_id   | int         | YES  |     | NULL    |       |
+| department_name | varchar(50) | YES  |     | NULL    |       |
+| location        | varchar(50) | YES  |     | NULL    |       |
++-----------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table departmenets add column xyz boolean;
+ERROR 1146 (42S02): Table 'company_db.departmenets' doesn't exist
+mysql> alter table departments add column xyz boolean;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> describe departments;
++-----------------+-------------+------+-----+---------+-------+
+| Field           | Type        | Null | Key | Default | Extra |
++-----------------+-------------+------+-----+---------+-------+
+| department_id   | int         | YES  |     | NULL    |       |
+| department_name | varchar(50) | YES  |     | NULL    |       |
+| location        | varchar(50) | YES  |     | NULL    |       |
+| xyz             | tinyint(1)  | YES  |     | NULL    |       |
++-----------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table departments modify column department_id int UNIQUE;
+ERROR 1062 (23000): Duplicate entry '1' for key 'departments.department_id'
+mysql> select * from departments;
++---------------+-----------------+------------+------+
+| department_id | department_name | location   | xyz  |
++---------------+-----------------+------------+------+
+|             1 | Engineering     | Chennai    | NULL |
+|             1 | Engineering     | Chennai    | NULL |
+|             2 | HR              | Coimbatore | NULL |
+|             3 | Finance         | Bangalore  | NULL |
+|             4 | Sales           | Hyderabad  | NULL |
++---------------+-----------------+------------+------+
+5 rows in set (0.00 sec)
+
+mysql> delete from departments where department_id=1;
+Query OK, 2 rows affected (0.00 sec)
+
+mysql> select * from departments;
++---------------+-----------------+------------+------+
+| department_id | department_name | location   | xyz  |
++---------------+-----------------+------------+------+
+|             2 | HR              | Coimbatore | NULL |
+|             3 | Finance         | Bangalore  | NULL |
+|             4 | Sales           | Hyderabad  | NULL |
++---------------+-----------------+------------+------+
+3 rows in set (0.00 sec)
+
+mysql> INSERT INTO departments
+    -> VALUES
+    -> (1, 'Engineering', 'Chennai');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> INSERT INTO departments VALUES (1, 'Engineering', 'Chennai', NULL);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from departments;
++---------------+-----------------+------------+------+
+| department_id | department_name | location   | xyz  |
++---------------+-----------------+------------+------+
+|             2 | HR              | Coimbatore | NULL |
+|             3 | Finance         | Bangalore  | NULL |
+|             4 | Sales           | Hyderabad  | NULL |
+|             1 | Engineering     | Chennai    | NULL |
++---------------+-----------------+------------+------+
+4 rows in set (0.00 sec)
+
+mysql> alter table departments modify column department_id int UNIQUE;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> describe departments;
++-----------------+-------------+------+-----+---------+-------+
+| Field           | Type        | Null | Key | Default | Extra |
++-----------------+-------------+------+-----+---------+-------+
+| department_id   | int         | YES  | UNI | NULL    |       |
+| department_name | varchar(50) | YES  |     | NULL    |       |
+| location        | varchar(50) | YES  |     | NULL    |       |
+| xyz             | tinyint(1)  | YES  |     | NULL    |       |
++-----------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select * from departments;
++---------------+-----------------+------------+------+
+| department_id | department_name | location   | xyz  |
++---------------+-----------------+------------+------+
+|             2 | HR              | Coimbatore | NULL |
+|             3 | Finance         | Bangalore  | NULL |
+|             4 | Sales           | Hyderabad  | NULL |
+|             1 | Engineering     | Chennai    | NULL |
++---------------+-----------------+------------+------+
+4 rows in set (0.00 sec)
+
+mysql> select * from departments limit 1
+    -> ;
++---------------+-----------------+------------+------+
+| department_id | department_name | location   | xyz  |
++---------------+-----------------+------------+------+
+|             2 | HR              | Coimbatore | NULL |
++---------------+-----------------+------------+------+
+1 row in set (0.00 sec)
+
+mysql> INSERT INTO departments
+    -> VALUES
+    -> (1, 'Engineering', 'Chennai', NULL);
+ERROR 1062 (23000): Duplicate entry '1' for key 'departments.department_id'
+mysql> update table departments set xyz=TRUE;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table departments set xyz=TRUE' at line 1
+mysql> update table departments set xyz=true;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table departments set xyz=true' at line 1
+mysql> update table departments set xyz=True;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table departments set xyz=True' at line 1
+mysql> update table departments set xyz=1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table departments set xyz=1' at line 1
+mysql> update departments set xyz=1;
+Query OK, 4 rows affected (0.00 sec)
+Rows matched: 4  Changed: 4  Warnings: 0
+
+mysql> update departments set xyz=TRUE;
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 4  Changed: 0  Warnings: 0
+
+mysql> select * from departments;
++---------------+-----------------+------------+------+
+| department_id | department_name | location   | xyz  |
++---------------+-----------------+------------+------+
+|             2 | HR              | Coimbatore |    1 |
+|             3 | Finance         | Bangalore  |    1 |
+|             4 | Sales           | Hyderabad  |    1 |
+|             1 | Engineering     | Chennai    |    1 |
++---------------+-----------------+------------+------+
+4 rows in set (0.00 sec)
+
+mysql> describe departments;
++-----------------+-------------+------+-----+---------+-------+
+| Field           | Type        | Null | Key | Default | Extra |
++-----------------+-------------+------+-----+---------+-------+
+| department_id   | int         | YES  | UNI | NULL    |       |
+| department_name | varchar(50) | YES  |     | NULL    |       |
+| location        | varchar(50) | YES  |     | NULL    |       |
+| xyz             | tinyint(1)  | YES  |     | NULL    |       |
++-----------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table departments xyz tinyint(1) NOT NULL;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'xyz tinyint(1) NOT NULL' at line 1
+mysql> alter departments xyz tinyint(1) NOT NULL;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'departments xyz tinyint(1) NOT NULL' at line 1
+mysql> alter table departments xyz tinyint NOT NULL;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'xyz tinyint NOT NULL' at line 1
+mysql> alter table departments xyz tinyint NOT NULL;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'xyz tinyint NOT NULL' at line 1
+mysql> alter table departments xyz tinyint(NOT NULL);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'xyz tinyint(NOT NULL)' at line 1
+mysql> alter table departments xyz boolean NOT NULL;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'xyz boolean NOT NULL' at line 1
+mysql> alter table departments modify column xyz tinyint NOT NULL;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> describe departments;
++-----------------+-------------+------+-----+---------+-------+
+| Field           | Type        | Null | Key | Default | Extra |
++-----------------+-------------+------+-----+---------+-------+
+| department_id   | int         | YES  | UNI | NULL    |       |
+| department_name | varchar(50) | YES  |     | NULL    |       |
+| location        | varchar(50) | YES  |     | NULL    |       |
+| xyz             | tinyint     | NO   |     | NULL    |       |
++-----------------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> select * from departments;
++---------------+-----------------+------------+-----+
+| department_id | department_name | location   | xyz |
++---------------+-----------------+------------+-----+
+|             2 | HR              | Coimbatore |   1 |
+|             3 | Finance         | Bangalore  |   1 |
+|             4 | Sales           | Hyderabad  |   1 |
+|             1 | Engineering     | Chennai    |   1 |
++---------------+-----------------+------------+-----+
+4 rows in set (0.00 sec)
+
+mysql> update departments set xyz=NULL where department_id=1;
+ERROR 1048 (23000): Column 'xyz' cannot be null
+mysql> alter table departments drop column xyz;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> describe departments;
++-----------------+-------------+------+-----+---------+-------+
+| Field           | Type        | Null | Key | Default | Extra |
++-----------------+-------------+------+-----+---------+-------+
+| department_id   | int         | YES  | UNI | NULL    |       |
+| department_name | varchar(50) | YES  |     | NULL    |       |
+| location        | varchar(50) | YES  |     | NULL    |       |
++-----------------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> alter table departments modify column department_id int primary key;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> describe departments;
++-----------------+-------------+------+-----+---------+-------+
+| Field           | Type        | Null | Key | Default | Extra |
++-----------------+-------------+------+-----+---------+-------+
+| department_id   | int         | NO   | PRI | NULL    |       |
+| department_name | varchar(50) | YES  |     | NULL    |       |
+| location        | varchar(50) | YES  |     | NULL    |       |
++-----------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> select * from departments;
++---------------+-----------------+------------+
+| department_id | department_name | location   |
++---------------+-----------------+------------+
+|             1 | Engineering     | Chennai    |
+|             2 | HR              | Coimbatore |
+|             3 | Finance         | Bangalore  |
+|             4 | Sales           | Hyderabad  |
++---------------+-----------------+------------+
+4 rows in set (0.00 sec)
+
+mysql> delete from departments;
+Query OK, 4 rows affected (0.00 sec)
+
+mysql> select * from departments;
+Empty set (0.00 sec)
+
+mysql> describe departments;
++-----------------+-------------+------+-----+---------+-------+
+| Field           | Type        | Null | Key | Default | Extra |
++-----------------+-------------+------+-----+---------+-------+
+| department_id   | int         | NO   | PRI | NULL    |       |
+| department_name | varchar(50) | YES  |     | NULL    |       |
+| location        | varchar(50) | YES  |     | NULL    |       |
++-----------------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> drop table departments;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> describe departments;
+ERROR 1146 (42S02): Table 'company_db.departments' doesn't exist
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql> CREATE TABLE departments (
+    ->     department_id INT PRIMARY KEY,
+    ->     department_name VARCHAR(50) NOT NULL,
+    ->     location VARCHAR(50)
+    -> );
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> CREATE TABLE employees (
+    ->     employee_id INT PRIMARY KEY,
+    ->     employee_name VARCHAR(100) NOT NULL,
+    ->     email VARCHAR(100) UNIQUE,
+    ->     salary DECIMAL(10,2),
+    ->     age INT,
+    ->     city VARCHAR(50),
+    ->     department_id INT,
+    ->     joining_date DATE,
+    -> 
+    ->     FOREIGN KEY (department_id)
+    ->         REFERENCES departments(department_id)
+    -> );
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> INSERT INTO departments
+    -> VALUES
+    -> (1, 'Engineering', 'Chennai'),
+    -> (2, 'HR', 'Coimbatore'),
+    -> (3, 'Finance', 'Bangalore'),
+    -> (4, 'Sales', 'Hyderabad');
+Query OK, 4 rows affected (0.00 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> INSERT INTO employees
+    -> (employee_id, employee_name, email, salary, age, city, department_id, joining_date)
+    -> VALUES
+    -> (101, 'Arun', 'arun@gmail.com', 65000, 28, 'Chennai', 1, '2023-01-15'),
+    -> 
+    -> (102, 'Priya', 'priya@gmail.com', 75000, 30, 'Coimbatore', 1, '2022-06-10'),
+    -> 
+    -> (103, 'Karthik', 'karthik@gmail.com', 45000, 25, 'Madurai', 2, '2024-02-20'),
+    -> 
+    -> (104, 'Meena', 'meena@gmail.com', 55000, 32, 'Bangalore', 3, '2021-10-05'), 
+    -> 
+    -> (105, 'Vijay', 'vijay@gmail.com', 40000, 27, 'Chennai', 4, '2023-08-11'),
+    -> 
+    -> (106, 'Divya', 'divya@gmail.com', 80000, 35, 'Coimbatore', 1, '2020-04-15'),
+    -> 
+    -> (107, 'Rahul', 'rahul@gmail.com', 50000, 29, 'Hyderabad', 4, '2022-12-01'), 
+    -> 
+    -> (108, 'Sneha', 'sneha@gmail.com', 60000, 26, 'Chennai', NULL, '2024-05-12');
+Query OK, 8 rows affected (0.00 sec)
+Records: 8  Duplicates: 0  Warnings: 0
+
+mysql> describe departments;
++-----------------+-------------+------+-----+---------+-------+
+| Field           | Type        | Null | Key | Default | Extra |
++-----------------+-------------+------+-----+---------+-------+
+| department_id   | int         | NO   | PRI | NULL    |       |
+| department_name | varchar(50) | NO   |     | NULL    |       |
+| location        | varchar(50) | YES  |     | NULL    |       |
++-----------------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> describe employees;
++---------------+---------------+------+-----+---------+-------+
+| Field         | Type          | Null | Key | Default | Extra |
++---------------+---------------+------+-----+---------+-------+
+| employee_id   | int           | NO   | PRI | NULL    |       |
+| employee_name | varchar(100)  | NO   |     | NULL    |       |
+| email         | varchar(100)  | YES  | UNI | NULL    |       |
+| salary        | decimal(10,2) | YES  |     | NULL    |       |
+| age           | int           | YES  |     | NULL    |       |
+| city          | varchar(50)   | YES  |     | NULL    |       |
+| department_id | int           | YES  | MUL | NULL    |       |
+| joining_date  | date          | YES  |     | NULL    |       |
++---------------+---------------+------+-----+---------+-------+
+8 rows in set (0.00 sec)
+
+mysql> select * from departments;
++---------------+-----------------+------------+
+| department_id | department_name | location   |
++---------------+-----------------+------------+
+|             1 | Engineering     | Chennai    |
+|             2 | HR              | Coimbatore |
+|             3 | Finance         | Bangalore  |
+|             4 | Sales           | Hyderabad  |
++---------------+-----------------+------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from employees;
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+| employee_id | employee_name | email             | salary   | age  | city       | department_id | joining_date |
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+|         101 | Arun          | arun@gmail.com    | 65000.00 |   28 | Chennai    |             1 | 2023-01-15   |
+|         102 | Priya         | priya@gmail.com   | 75000.00 |   30 | Coimbatore |             1 | 2022-06-10   |
+|         103 | Karthik       | karthik@gmail.com | 45000.00 |   25 | Madurai    |             2 | 2024-02-20   |
+|         104 | Meena         | meena@gmail.com   | 55000.00 |   32 | Bangalore  |             3 | 2021-10-05   |
+|         105 | Vijay         | vijay@gmail.com   | 40000.00 |   27 | Chennai    |             4 | 2023-08-11   |
+|         106 | Divya         | divya@gmail.com   | 80000.00 |   35 | Coimbatore |             1 | 2020-04-15   |
+|         107 | Rahul         | rahul@gmail.com   | 50000.00 |   29 | Hyderabad  |             4 | 2022-12-01   |
+|         108 | Sneha         | sneha@gmail.com   | 60000.00 |   26 | Chennai    |          NULL | 2024-05-12   |
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+8 rows in set (0.00 sec)
+
+mysql> delete from departments where department_id=1;
+ERROR 1451 (23000): Cannot delete or update a parent row: a foreign key constraint fails (`company_db`.`employees`, CONSTRAINT `employees_ibfk_1` FOREIGN KEY (`department_id`) REFERENCES `departments` (`department_id`))
+mysql> select * from employees;
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+| employee_id | employee_name | email             | salary   | age  | city       | department_id | joining_date |
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+|         101 | Arun          | arun@gmail.com    | 65000.00 |   28 | Chennai    |             1 | 2023-01-15   |
+|         102 | Priya         | priya@gmail.com   | 75000.00 |   30 | Coimbatore |             1 | 2022-06-10   |
+|         103 | Karthik       | karthik@gmail.com | 45000.00 |   25 | Madurai    |             2 | 2024-02-20   |
+|         104 | Meena         | meena@gmail.com   | 55000.00 |   32 | Bangalore  |             3 | 2021-10-05   |
+|         105 | Vijay         | vijay@gmail.com   | 40000.00 |   27 | Chennai    |             4 | 2023-08-11   |
+|         106 | Divya         | divya@gmail.com   | 80000.00 |   35 | Coimbatore |             1 | 2020-04-15   |
+|         107 | Rahul         | rahul@gmail.com   | 50000.00 |   29 | Hyderabad  |             4 | 2022-12-01   |
+|         108 | Sneha         | sneha@gmail.com   | 60000.00 |   26 | Chennai    |          NULL | 2024-05-12   |
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+8 rows in set (0.00 sec)
+
+mysql> select * from employees order by age;
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+| employee_id | employee_name | email             | salary   | age  | city       | department_id | joining_date |
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+|         103 | Karthik       | karthik@gmail.com | 45000.00 |   25 | Madurai    |             2 | 2024-02-20   |
+|         108 | Sneha         | sneha@gmail.com   | 60000.00 |   26 | Chennai    |          NULL | 2024-05-12   |
+|         105 | Vijay         | vijay@gmail.com   | 40000.00 |   27 | Chennai    |             4 | 2023-08-11   |
+|         101 | Arun          | arun@gmail.com    | 65000.00 |   28 | Chennai    |             1 | 2023-01-15   |
+|         107 | Rahul         | rahul@gmail.com   | 50000.00 |   29 | Hyderabad  |             4 | 2022-12-01   |
+|         102 | Priya         | priya@gmail.com   | 75000.00 |   30 | Coimbatore |             1 | 2022-06-10   |
+|         104 | Meena         | meena@gmail.com   | 55000.00 |   32 | Bangalore  |             3 | 2021-10-05   |
+|         106 | Divya         | divya@gmail.com   | 80000.00 |   35 | Coimbatore |             1 | 2020-04-15   |
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+8 rows in set (0.00 sec)
+
+mysql> select * from employees order by age asc;
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+| employee_id | employee_name | email             | salary   | age  | city       | department_id | joining_date |
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+|         103 | Karthik       | karthik@gmail.com | 45000.00 |   25 | Madurai    |             2 | 2024-02-20   |
+|         108 | Sneha         | sneha@gmail.com   | 60000.00 |   26 | Chennai    |          NULL | 2024-05-12   |
+|         105 | Vijay         | vijay@gmail.com   | 40000.00 |   27 | Chennai    |             4 | 2023-08-11   |
+|         101 | Arun          | arun@gmail.com    | 65000.00 |   28 | Chennai    |             1 | 2023-01-15   |
+|         107 | Rahul         | rahul@gmail.com   | 50000.00 |   29 | Hyderabad  |             4 | 2022-12-01   |
+|         102 | Priya         | priya@gmail.com   | 75000.00 |   30 | Coimbatore |             1 | 2022-06-10   |
+|         104 | Meena         | meena@gmail.com   | 55000.00 |   32 | Bangalore  |             3 | 2021-10-05   |
+|         106 | Divya         | divya@gmail.com   | 80000.00 |   35 | Coimbatore |             1 | 2020-04-15   |
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+8 rows in set (0.00 sec)
+
+mysql> select * from employees order by salary desc;
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+| employee_id | employee_name | email             | salary   | age  | city       | department_id | joining_date |
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+|         106 | Divya         | divya@gmail.com   | 80000.00 |   35 | Coimbatore |             1 | 2020-04-15   |
+|         102 | Priya         | priya@gmail.com   | 75000.00 |   30 | Coimbatore |             1 | 2022-06-10   |
+|         101 | Arun          | arun@gmail.com    | 65000.00 |   28 | Chennai    |             1 | 2023-01-15   |
+|         108 | Sneha         | sneha@gmail.com   | 60000.00 |   26 | Chennai    |          NULL | 2024-05-12   |
+|         104 | Meena         | meena@gmail.com   | 55000.00 |   32 | Bangalore  |             3 | 2021-10-05   |
+|         107 | Rahul         | rahul@gmail.com   | 50000.00 |   29 | Hyderabad  |             4 | 2022-12-01   |
+|         103 | Karthik       | karthik@gmail.com | 45000.00 |   25 | Madurai    |             2 | 2024-02-20   |
+|         105 | Vijay         | vijay@gmail.com   | 40000.00 |   27 | Chennai    |             4 | 2023-08-11   |
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+8 rows in set (0.00 sec)
+
+mysql> select * from employees order by employee_name;
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+| employee_id | employee_name | email             | salary   | age  | city       | department_id | joining_date |
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+|         101 | Arun          | arun@gmail.com    | 65000.00 |   28 | Chennai    |             1 | 2023-01-15   |
+|         106 | Divya         | divya@gmail.com   | 80000.00 |   35 | Coimbatore |             1 | 2020-04-15   |
+|         103 | Karthik       | karthik@gmail.com | 45000.00 |   25 | Madurai    |             2 | 2024-02-20   |
+|         104 | Meena         | meena@gmail.com   | 55000.00 |   32 | Bangalore  |             3 | 2021-10-05   |
+|         102 | Priya         | priya@gmail.com   | 75000.00 |   30 | Coimbatore |             1 | 2022-06-10   |
+|         107 | Rahul         | rahul@gmail.com   | 50000.00 |   29 | Hyderabad  |             4 | 2022-12-01   |
+|         108 | Sneha         | sneha@gmail.com   | 60000.00 |   26 | Chennai    |          NULL | 2024-05-12   |
+|         105 | Vijay         | vijay@gmail.com   | 40000.00 |   27 | Chennai    |             4 | 2023-08-11   |
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+8 rows in set (0.00 sec)
+
+mysql> select * from employees order by employee_name desc;
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+| employee_id | employee_name | email             | salary   | age  | city       | department_id | joining_date |
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+|         105 | Vijay         | vijay@gmail.com   | 40000.00 |   27 | Chennai    |             4 | 2023-08-11   |
+|         108 | Sneha         | sneha@gmail.com   | 60000.00 |   26 | Chennai    |          NULL | 2024-05-12   |
+|         107 | Rahul         | rahul@gmail.com   | 50000.00 |   29 | Hyderabad  |             4 | 2022-12-01   |
+|         102 | Priya         | priya@gmail.com   | 75000.00 |   30 | Coimbatore |             1 | 2022-06-10   |
+|         104 | Meena         | meena@gmail.com   | 55000.00 |   32 | Bangalore  |             3 | 2021-10-05   |
+|         103 | Karthik       | karthik@gmail.com | 45000.00 |   25 | Madurai    |             2 | 2024-02-20   |
+|         106 | Divya         | divya@gmail.com   | 80000.00 |   35 | Coimbatore |             1 | 2020-04-15   |
+|         101 | Arun          | arun@gmail.com    | 65000.00 |   28 | Chennai    |             1 | 2023-01-15   |
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+8 rows in set (0.00 sec)
+
+mysql> create table student (sid int primary key, sdep varchar(20), mid int);
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> describe students;
+ERROR 1146 (42S02): Table 'company_db.students' doesn't exist
+mysql> describe student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| sid   | int         | NO   | PRI | NULL    |       |
+| sdep  | varchar(20) | YES  |     | NULL    |       |
+| mid   | int         | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> insert into student values
+    -> (1, 'cse', 11),
+    -> (2, 'it', 11),
+    -> (3, 'eee', 12),
+    -> (4, 'ece', 13);
+Query OK, 4 rows affected (0.00 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select * from student;
++-----+------+------+
+| sid | sdep | mid  |
++-----+------+------+
+|   1 | cse  |   11 |
+|   2 | it   |   11 |
+|   3 | eee  |   12 |
+|   4 | ece  |   13 |
++-----+------+------+
+4 rows in set (0.00 sec)
+
+mysql> create table mentor (mid int primary key, mname varchar(20), mloc varchar(20));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> insert into mentor values 
+    -> (11, 'abc', 'cbe'),
+    -> (12, 'xyz', 'che'),
+    -> (13, 'pqr', 'mad');
+Query OK, 3 rows affected (0.00 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> describe mentor;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| mid   | int         | NO   | PRI | NULL    |       |
+| mname | varchar(20) | YES  |     | NULL    |       |
+| mloc  | varchar(20) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> select * from mentor;
++-----+-------+------+
+| mid | mname | mloc |
++-----+-------+------+
+|  11 | abc   | cbe  |
+|  12 | xyz   | che  |
+|  13 | pqr   | mad  |
++-----+-------+------+
+3 rows in set (0.00 sec)
+
+mysql> select * from student where sid = 1;
++-----+------+------+
+| sid | sdep | mid  |
++-----+------+------+
+|   1 | cse  |   11 |
++-----+------+------+
+1 row in set (0.00 sec)
+
+mysql> select mid from student where sid = 1;
++------+
+| mid  |
++------+
+|   11 |
++------+
+1 row in set (0.00 sec)
+
+mysql> select * from mentor where mid=11;
++-----+-------+------+
+| mid | mname | mloc |
++-----+-------+------+
+|  11 | abc   | cbe  |
++-----+-------+------+
+1 row in set (0.00 sec)
+
+mysql> select * from mentor where mid=(select mid from student where sid = 1);
++-----+-------+------+
+| mid | mname | mloc |
++-----+-------+------+
+|  11 | abc   | cbe  |
++-----+-------+------+
+1 row in set (0.00 sec)
+
+mysql> select * from student;
++-----+------+------+
+| sid | sdep | mid  |
++-----+------+------+
+|   1 | cse  |   11 |
+|   2 | it   |   11 |
+|   3 | eee  |   12 |
+|   4 | ece  |   13 |
++-----+------+------+
+4 rows in set (0.00 sec)
+
+mysql> select * from mentor;
++-----+-------+------+
+| mid | mname | mloc |
++-----+-------+------+
+|  11 | abc   | cbe  |
+|  12 | xyz   | che  |
+|  13 | pqr   | mad  |
++-----+-------+------+
+3 rows in set (0.00 sec)
+
+mysql> select student.sid, mentor.mname, mentor.mloc
+    -> from
+    -> student
+    -> join
+    -> mentor
+    -> on student.mid=mentor.mid;
++-----+-------+------+
+| sid | mname | mloc |
++-----+-------+------+
+|   1 | abc   | cbe  |
+|   2 | abc   | cbe  |
+|   3 | xyz   | che  |
+|   4 | pqr   | mad  |
++-----+-------+------+
+4 rows in set (0.00 sec)
+
+mysql> select student.sid, mentor.mname, mentor.mloc from student join mentor on student.mid=mentor.mid where student.sid=1;
++-----+-------+------+
+| sid | mname | mloc |
++-----+-------+------+
+|   1 | abc   | cbe  |
++-----+-------+------+
+1 row in set (0.00 sec)
+
+mysql> mysql> select student.sid, mentor.mname, mentor.mloc from student join mentor on student.mid=mentor.mid;
+ERROR 1054 (42S22): Unknown column 'mentor.midtor.mid' in 'on clause'
+mysql> select student.sid, mentor.mname, mentor.mloc from student join mentor on student.mid=mentor.midtor.mid;
+ERROR 1054 (42S22): Unknown column 'mentor.midtor.mid' in 'on clause'
+mysql> select student.sid, mentor.mname, mentor.mloc from student join mentor on student.mid=mentor.mid; 
++-----+-------+------+
+| sid | mname | mloc |
++-----+-------+------+
+|   1 | abc   | cbe  |
+|   2 | abc   | cbe  |
+|   3 | xyz   | che  |
+|   4 | pqr   | mad  |
++-----+-------+------+
+4 rows in set (0.00 sec)
+
+mysql> select * from student;                                                
++-----+------+------+
+| sid | sdep | mid  |
++-----+------+------+
+|   1 | cse  |   11 |
+|   2 | it   |   11 |
+|   3 | eee  |   12 |
+|   4 | ece  |   13 |
++-----+------+------+
+4 rows in set (0.00 sec)
+
+mysql> select * from mentor;
++-----+-------+------+
+| mid | mname | mloc |
++-----+-------+------+
+|  11 | abc   | cbe  |
+|  12 | xyz   | che  |
+|  13 | pqr   | mad  |
++-----+-------+------+
+3 rows in set (0.00 sec)
+
+mysql> insert into student values(5, 'ei', NULL);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student;
++-----+------+------+
+| sid | sdep | mid  |
++-----+------+------+
+|   1 | cse  |   11 |
+|   2 | it   |   11 |
+|   3 | eee  |   12 |
+|   4 | ece  |   13 |
+|   5 | ei   | NULL |
++-----+------+------+
+5 rows in set (0.00 sec)
+
+mysql> select * from mentor;
++-----+-------+------+
+| mid | mname | mloc |
++-----+-------+------+
+|  11 | abc   | cbe  |
+|  12 | xyz   | che  |
+|  13 | pqr   | mad  |
++-----+-------+------+
+3 rows in set (0.00 sec)
+
+mysql> select student.sid, mentor.mname, mentor.mloc from student join mentor on student.mid=mentor.mid;
++-----+-------+------+
+| sid | mname | mloc |
++-----+-------+------+
+|   1 | abc   | cbe  |
+|   2 | abc   | cbe  |
+|   3 | xyz   | che  |
+|   4 | pqr   | mad  |
++-----+-------+------+
+4 rows in set (0.00 sec)
+
+mysql> select student.sid, mentor.mname, mentor.mloc from student left join mentor on student.mid=mentor.mid;
++-----+-------+------+
+| sid | mname | mloc |
++-----+-------+------+
+|   1 | abc   | cbe  |
+|   2 | abc   | cbe  |
+|   3 | xyz   | che  |
+|   4 | pqr   | mad  |
+|   5 | NULL  | NULL |
++-----+-------+------+
+5 rows in set (0.00 sec)
+
+mysql> select student.sid, mentor.mname, mentor.mloc from student right join mentor on student.mid=mentor.mid;
++------+-------+------+
+| sid  | mname | mloc |
++------+-------+------+
+|    2 | abc   | cbe  |
+|    1 | abc   | cbe  |
+|    3 | xyz   | che  |
+|    4 | pqr   | mad  |
++------+-------+------+
+4 rows in set (0.00 sec)
+
+mysql> select * from mentor;
++-----+-------+------+
+| mid | mname | mloc |
++-----+-------+------+
+|  11 | abc   | cbe  |
+|  12 | xyz   | che  |
+|  13 | pqr   | mad  |
++-----+-------+------+
+3 rows in set (0.00 sec)
+
+mysql> insert into mentor values (14, 'mno', 'mad');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from mentor;
++-----+-------+------+
+| mid | mname | mloc |
++-----+-------+------+
+|  11 | abc   | cbe  |
+|  12 | xyz   | che  |
+|  13 | pqr   | mad  |
+|  14 | mno   | mad  |
++-----+-------+------+
+4 rows in set (0.00 sec)
+
+mysql> select * from students
+    -> ;
+ERROR 1146 (42S02): Table 'company_db.students' doesn't exist
+mysql> select * from student;
++-----+------+------+
+| sid | sdep | mid  |
++-----+------+------+
+|   1 | cse  |   11 |
+|   2 | it   |   11 |
+|   3 | eee  |   12 |
+|   4 | ece  |   13 |
+|   5 | ei   | NULL |
++-----+------+------+
+5 rows in set (0.00 sec)
+
+mysql> select student.sid, mentor.mname, mentor.mloc from student right join mentor on student.mid=mentor.mid;
++------+-------+------+
+| sid  | mname | mloc |
++------+-------+------+
+|    2 | abc   | cbe  |
+|    1 | abc   | cbe  |
+|    3 | xyz   | che  |
+|    4 | pqr   | mad  |
+| NULL | mno   | mad  |
++------+-------+------+
+5 rows in set (0.00 sec)
+
+mysql> select student.sid, mentor.mname, mentor.mloc from student join mentor on student.mid=mentor.mid;
++-----+-------+------+
+| sid | mname | mloc |
++-----+-------+------+
+|   1 | abc   | cbe  |
+|   2 | abc   | cbe  |
+|   3 | xyz   | che  |
+|   4 | pqr   | mad  |
++-----+-------+------+
+4 rows in set (0.00 sec)
+
+mysql> select student.sid, mentor.mname, mentor.mloc from student right join mentor on student.mid=mentor.mid;
++------+-------+------+
+| sid  | mname | mloc |
++------+-------+------+
+|    2 | abc   | cbe  |
+|    1 | abc   | cbe  |
+|    3 | xyz   | che  |
+|    4 | pqr   | mad  |
+| NULL | mno   | mad  |
++------+-------+------+
+5 rows in set (0.00 sec)
+
+mysql> select student.sid, mentor.mname, mentor.mloc from student left join mentor on student.mid=mentor.mid;
++-----+-------+------+
+| sid | mname | mloc |
++-----+-------+------+
+|   1 | abc   | cbe  |
+|   2 | abc   | cbe  |
+|   3 | xyz   | che  |
+|   4 | pqr   | mad  |
+|   5 | NULL  | NULL |
++-----+-------+------+
+5 rows in set (0.00 sec)
+
+mysql> select student.sid, mentor.mname, mentor.mloc from student left join mentor on student.mid=mentor.mid or select student.sid, mentor.mname, mentor.mloc from student right join mentor on student.mid=mentor.mid;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'select student.sid, mentor.mname, mentor.mloc from student right join mentor on ' at line 1
+mysql> select student.sid, mentor.mname, mentor.mloc from student left join mentor on student.mid=mentor.mid union select student.sid, mentor.mname, mentor.mloc from student right join mentor on student.mid=mentor.mid;
++------+-------+------+
+| sid  | mname | mloc |
++------+-------+------+
+|    1 | abc   | cbe  |
+|    2 | abc   | cbe  |
+|    3 | xyz   | che  |
+|    4 | pqr   | mad  |
+|    5 | NULL  | NULL |
+| NULL | mno   | mad  |
++------+-------+------+
+6 rows in set (0.01 sec)
+
+mysql> 

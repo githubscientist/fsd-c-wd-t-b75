@@ -115,3 +115,113 @@ Schema:
     - The structure that defines how data is organized in the database.
     - Includes tables, columns, data types, relationships, and constraints.
     - Helps ensure data integrity and consistency.
+
+Day32:
+
+[x] Select Queries
+[x] WHERE, ORDER BY CLAUSES
+[x] INSERT, UPDATE, DELETE operations
+[x] Primary key & Foreign key constraints
+[x] Joins Fundamentals
+[ ] Transactions & ACID Properties
+
+From SQL Client:
+
+```sql
+\connect root@localhost
+\sql
+```
+
+Queries:
+
+To list the databases:
+
+```sql
+SHOW DATABASES;
+```
+
+Create Database:
+
+```sql
+CREATE DATABASE database_name;
+```
+
+Example:
+
+```sql
+CREATE DATABASE company_db;
+```
+
+To See the currently selected database:
+
+```sql
+SELECT DATABASE();
+```
+
+To select the database to use:
+
+```sql
+USE database_name;
+```
+
+Example:
+
+```sql
+USE company_db;
+```
+
+To drop a database:
+
+```sql
+DROP DATABASE database_name;
+```
+
+Example:
+
+```sql
+DROP DATABASE ecommerce;
+```
+
+To view the tables:
+
+```sql
+show tables;
+```
+
+To create a new table:
+
+```sql
+create table table_name (
+    column1 datatype constraints,
+    column2 datatype constraints,
+    ...
+);
+```
+
+Example:
+
+```sql
+create table departments ( department_id int, department_name varchar(50), location varchar(50) );
+```
+
+```sql
+INSERT INTO departments
+VALUES
+(1, 'Engineering', 'Chennai'),
+(2, 'HR', 'Coimbatore'),
+(3, 'Finance', 'Bangalore'),
+(4, 'Sales', 'Hyderabad');
+```
+
+
+Constraints:
+
+Constraints are rules applied to columns in a table to enforce data integrity and consistency. Examples include PRIMARY KEY, FOREIGN KEY, UNIQUE, and NOT NULL constraints.
+
+UNIQUE: Ensures that all values in a column are unique across the table.
+
+NOT NULL: Ensures that a column cannot have a NULL value.
+
+PRIMARY KEY: Uniquely identifies each record in a table. A primary key column cannot have NULL values and must contain unique values.
+
+FOREIGN KEY: Establishes a link between the data in two tables, enforcing referential integrity.

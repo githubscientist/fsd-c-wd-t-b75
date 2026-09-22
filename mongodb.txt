@@ -1,0 +1,316 @@
+show databases;
+admin    40.00 KiB
+config   36.00 KiB
+local    72.00 KiB
+testdb  172.00 KiB
+show dbs;
+admin    40.00 KiB
+config   72.00 KiB
+local    72.00 KiB
+testdb  172.00 KiB
+db;
+test
+db
+test
+use company_db;
+switched to db company_db
+show collections;
+db.createCollection("departments");
+{ ok: 1 }
+db
+company_db
+db.departments.find();
+db.departments.insertOne({
+    department_id: 1,
+    department_name: "Engineering",
+    location: "Chennai"
+});
+{
+  acknowledged: true,
+  insertedId: ObjectId('6ab28d30a0e53ee4b1c66ef8')
+}
+db.departments.find();
+{
+  _id: ObjectId('6ab28d30a0e53ee4b1c66ef8'),
+  department_id: 1,
+  department_name: 'Engineering',
+  location: 'Chennai'
+}
+db.departments.insertMany([
+    {
+        department_id: 2,
+        department_name: "HR",
+        location: "Coimbatore"
+    },
+    {
+        department_id: 3,
+        department_name: "Finance",
+        location: "Bangalore"
+    },
+    {
+        department_id: 4,
+        department_name: "Sales",
+        location: "Hyderabad"
+    }
+]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6ab28d75a0e53ee4b1c66ef9'),
+    '1': ObjectId('6ab28d75a0e53ee4b1c66efa'),
+    '2': ObjectId('6ab28d75a0e53ee4b1c66efb')
+  }
+}
+db.departments.find();
+{
+  _id: ObjectId('6ab28d30a0e53ee4b1c66ef8'),
+  department_id: 1,
+  department_name: 'Engineering',
+  location: 'Chennai'
+}
+{
+  _id: ObjectId('6ab28d75a0e53ee4b1c66ef9'),
+  department_id: 2,
+  department_name: 'HR',
+  location: 'Coimbatore'
+}
+{
+  _id: ObjectId('6ab28d75a0e53ee4b1c66efa'),
+  department_id: 3,
+  department_name: 'Finance',
+  location: 'Bangalore'
+}
+{
+  _id: ObjectId('6ab28d75a0e53ee4b1c66efb'),
+  department_id: 4,
+  department_name: 'Sales',
+  location: 'Hyderabad'
+}
+db.departments.find({}, {
+    department_name: 1,
+    location: 1
+});
+{
+  _id: ObjectId('6ab28d30a0e53ee4b1c66ef8'),
+  department_name: 'Engineering',
+  location: 'Chennai'
+}
+{
+  _id: ObjectId('6ab28d75a0e53ee4b1c66ef9'),
+  department_name: 'HR',
+  location: 'Coimbatore'
+}
+{
+  _id: ObjectId('6ab28d75a0e53ee4b1c66efa'),
+  department_name: 'Finance',
+  location: 'Bangalore'
+}
+{
+  _id: ObjectId('6ab28d75a0e53ee4b1c66efb'),
+  department_name: 'Sales',
+  location: 'Hyderabad'
+}
+db.departments.find({}, {
+    department_id: 0
+});
+{
+  _id: ObjectId('6ab28d30a0e53ee4b1c66ef8'),
+  department_name: 'Engineering',
+  location: 'Chennai'
+}
+{
+  _id: ObjectId('6ab28d75a0e53ee4b1c66ef9'),
+  department_name: 'HR',
+  location: 'Coimbatore'
+}
+{
+  _id: ObjectId('6ab28d75a0e53ee4b1c66efa'),
+  department_name: 'Finance',
+  location: 'Bangalore'
+}
+{
+  _id: ObjectId('6ab28d75a0e53ee4b1c66efb'),
+  department_name: 'Sales',
+  location: 'Hyderabad'
+}
+db.departments.find({}, {
+    department_name: 1,
+    location: 1,
+    department_id: 0
+});
+MongoServerError[Location31254]: Cannot do exclusion on field department_id in inclusion projection
+db.departments.find({}, {
+    department_name: 1,
+    location: 1,
+    _id: 0
+});
+{
+  department_name: 'Engineering',
+  location: 'Chennai'
+}
+{
+  department_name: 'HR',
+  location: 'Coimbatore'
+}
+{
+  department_name: 'Finance',
+  location: 'Bangalore'
+}
+{
+  department_name: 'Sales',
+  location: 'Hyderabad'
+}
+db.departments.find({
+    location: "Coimbatore"
+});
+{
+  _id: ObjectId('6ab28d75a0e53ee4b1c66ef9'),
+  department_id: 2,
+  department_name: 'HR',
+  location: 'Coimbatore'
+}
+db.departments.find({
+    location: "Coimbatore"
+}, {
+    department_name: 1
+});
+{
+  _id: ObjectId('6ab28d75a0e53ee4b1c66ef9'),
+  department_name: 'HR'
+}
+db.departments.updateOne(
+    {
+        department_id: 1
+    }, 
+    {
+        $set: {
+            location: "Coimbatore"
+        }
+    }
+);
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.departments.find();
+{
+  _id: ObjectId('6ab28d30a0e53ee4b1c66ef8'),
+  department_id: 1,
+  department_name: 'Engineering',
+  location: 'Coimbatore'
+}
+{
+  _id: ObjectId('6ab28d75a0e53ee4b1c66ef9'),
+  department_id: 2,
+  department_name: 'HR',
+  location: 'Coimbatore'
+}
+{
+  _id: ObjectId('6ab28d75a0e53ee4b1c66efa'),
+  department_id: 3,
+  department_name: 'Finance',
+  location: 'Bangalore'
+}
+{
+  _id: ObjectId('6ab28d75a0e53ee4b1c66efb'),
+  department_id: 4,
+  department_name: 'Sales',
+  location: 'Hyderabad'
+}
+db.departments.updateMany(
+    {
+        location: "Coimbatore"
+    },
+    {
+        $set: {
+            location: "Chennai"
+        }
+    }
+);
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+db.departments.find();
+{
+  _id: ObjectId('6ab28d30a0e53ee4b1c66ef8'),
+  department_id: 1,
+  department_name: 'Engineering',
+  location: 'Chennai'
+}
+{
+  _id: ObjectId('6ab28d75a0e53ee4b1c66ef9'),
+  department_id: 2,
+  department_name: 'HR',
+  location: 'Chennai'
+}
+{
+  _id: ObjectId('6ab28d75a0e53ee4b1c66efa'),
+  department_id: 3,
+  department_name: 'Finance',
+  location: 'Bangalore'
+}
+{
+  _id: ObjectId('6ab28d75a0e53ee4b1c66efb'),
+  department_id: 4,
+  department_name: 'Sales',
+  location: 'Hyderabad'
+}
+db.departments.updateOne(
+    {
+        location: "Chennai"
+    },
+    {
+        $set: {
+            location: "Coimbatore"
+        }
+    }
+);
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.departments.find();
+{
+  _id: ObjectId('6ab28d30a0e53ee4b1c66ef8'),
+  department_id: 1,
+  department_name: 'Engineering',
+  location: 'Coimbatore'
+}
+{
+  _id: ObjectId('6ab28d75a0e53ee4b1c66ef9'),
+  department_id: 2,
+  department_name: 'HR',
+  location: 'Chennai'
+}
+{
+  _id: ObjectId('6ab28d75a0e53ee4b1c66efa'),
+  department_id: 3,
+  department_name: 'Finance',
+  location: 'Bangalore'
+}
+{
+  _id: ObjectId('6ab28d75a0e53ee4b1c66efb'),
+  department_id: 4,
+  department_name: 'Sales',
+  location: 'Hyderabad'
+}
+db.departments.deleteOne(
+    {
+        department_id: 4
+    }
+);
+{
+  acknowledged: true,
+  deletedCount: 1
+}
+db.departments.find();

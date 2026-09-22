@@ -123,7 +123,7 @@ Day32:
 [x] INSERT, UPDATE, DELETE operations
 [x] Primary key & Foreign key constraints
 [x] Joins Fundamentals
-[ ] Transactions & ACID Properties
+[x] Transactions & ACID Properties
 
 From SQL Client:
 
@@ -225,3 +225,138 @@ NOT NULL: Ensures that a column cannot have a NULL value.
 PRIMARY KEY: Uniquely identifies each record in a table. A primary key column cannot have NULL values and must contain unique values.
 
 FOREIGN KEY: Establishes a link between the data in two tables, enforcing referential integrity.
+
+Transactions & ACID Properties:
+
+Transactions in SQL are sequences of one or more SQL statements that are executed as a single unit of work. 
+
+ACID Properties:
+    - Atomicity: Ensures that all operations within a transaction are completed successfully. If any operation fails, the entire transaction is rolled back.
+    - Consistency: Ensures that a transaction brings the database from one valid state to another, maintaining database invariants.
+    - Isolation: Ensures that the operations of one transaction are isolated from the operations of other transactions.
+    - Durability: Ensures that once a transaction is committed, its changes are permanent, even in the case of a system failure.
+
+[x] Introduction to MongoDB
+[x] Collections & documents
+[x] MongoDB environment setup
+[x] find() queries
+[x] CRUD operations
+
+MongoDB:
+
+- MongoDB is a NoSQL database that stores data in flexible, JSON-like documents, allowing for dynamic schemas and scalability.
+
+Collections:
+- Collections in MongoDB are analogous to tables in relational databases. They store groups of documents.
+
+Documents:
+- Documents in MongoDB are analogous to rows in relational databases. They are JSON-like objects that contain data in key-value pairs.
+
+```json
+db.departments.insertOne({
+    department_id: 1,
+    department_name: "Engineering",
+    location: "Chennai"
+});
+
+db.departments.insertMany([
+    {
+        department_id: 2,
+        department_name: "HR",
+        location: "Coimbatore"
+    },
+    {
+        department_id: 3,
+        department_name: "Finance",
+        location: "Bangalore"
+    },
+    {
+        department_id: 4,
+        department_name: "Sales",
+        location: "Hyderabad"
+    }
+]);
+
+first argument: query criteria (filter)
+second argument: projection (fields to include or exclude)
+
+db.departments.find({}, {
+    department_name: 1,
+    location: 1
+});
+
+db.departments.find({}, {
+    department_id: 0
+});
+
+this is incorrect.
+
+db.departments.find({}, {
+    department_name: 1,
+    location: 1,
+    department_id: 0
+});
+
+but there is an exception.
+
+db.departments.find({}, {
+    department_name: 1,
+    location: 1,
+    _id: 0
+});
+
+
+select * from departments where location = 'Coimbatore';
+
+db.departments.find({
+    location: "Coimbatore"
+});
+
+select department_name from departments where location = 'Coimbatore';
+
+db.departments.find({
+    location: "Coimbatore"
+}, {
+    department_name: 1
+});
+
+db.departments.updateOne(
+    {
+        department_id: 1
+    }, 
+    {
+        $set: {
+            location: "Coimbatore"
+        }
+    }
+);
+
+db.departments.updateMany(
+    {
+        location: "Coimbatore"
+    },
+    {
+        $set: {
+            location: "Chennai"
+        }
+    }
+);
+
+db.departments.updateOne(
+    {
+        location: "Chennai"
+    },
+    {
+        $set: {
+            location: "Coimbatore"
+        }
+    }
+);
+
+db.departments.deleteOne(
+    {
+        department_id: 4
+    }
+);
+```
+

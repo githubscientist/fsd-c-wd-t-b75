@@ -1022,4 +1022,143 @@ mysql> select student.sid, mentor.mname, mentor.mloc from student left join ment
 +------+-------+------+
 6 rows in set (0.01 sec)
 
+mysql> select database();
+ERROR 4031 (HY000): The client was disconnected by the server because of inactivity. See wait_timeout and interactive_timeout for configuring this behavior.
+No connection. Trying to reconnect...
+Connection id:    13
+Current database: company_db
+
++------------+
+| database() |
++------------+
+| company_db |
++------------+
+1 row in set (0.15 sec)
+
+mysql> create table accounts (
+    -> account_id int primary_key,
+    -> account_holder varchar(100),
+    -> balance decimal(10, 2)
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'primary_key,
+account_holder varchar(100),
+balance decimal(10, 2)
+)' at line 2
+mysql> CREATE TABLE accounts (
+    ->     account_id INT PRIMARY KEY,
+    ->     account_holder VARCHAR(100),
+    ->     balance DECIMAL(10,2)
+    -> );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> describe accounts
+    -> ;
++----------------+---------------+------+-----+---------+-------+
+| Field          | Type          | Null | Key | Default | Extra |
++----------------+---------------+------+-----+---------+-------+
+| account_id     | int           | NO   | PRI | NULL    |       |
+| account_holder | varchar(100)  | YES  |     | NULL    |       |
+| balance        | decimal(10,2) | YES  |     | NULL    |       |
++----------------+---------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> INSERT INTO accounts
+    -> VALUES
+    -> (1, 'Arun', 50000),
+    -> (2, 'Priya', 30000);
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from accounts;
++------------+----------------+----------+
+| account_id | account_holder | balance  |
++------------+----------------+----------+
+|          1 | Arun           | 50000.00 |
+|          2 | Priya          | 30000.00 |
++------------+----------------+----------+
+2 rows in set (0.00 sec)
+
+mysql> start transaction;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> INSERT INTO accounts
+    -> VALUES
+    -> (1, 'Arun', 50000),
+    -> ^C^C
+
+^C
+mysql> UPDATE accounts
+    -> SET balance = balance - 5000
+    -> WHERE account_id = 1;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from accounts;
++------------+----------------+----------+
+| account_id | account_holder | balance  |
++------------+----------------+----------+
+|          1 | Arun           | 45000.00 |
+|          2 | Priya          | 30000.00 |
++------------+----------------+----------+
+2 rows in set (0.00 sec)
+
+mysql> UPDATE accounts
+    -> SET balance = balance + 5000
+    -> WHERE account_id = 2;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> WHERE account_id = 2;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE account_id = 2' at line 1
+mysql> select * from accounts;
++------------+----------------+----------+
+| account_id | account_holder | balance  |
++------------+----------------+----------+
+|          1 | Arun           | 45000.00 |
+|          2 | Priya          | 35000.00 |
++------------+----------------+----------+
+2 rows in set (0.00 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from accounts;
++------------+----------------+----------+
+| account_id | account_holder | balance  |
++------------+----------------+----------+
+|          1 | Arun           | 45000.00 |
+|          2 | Priya          | 35000.00 |
++------------+----------------+----------+
+2 rows in set (0.00 sec)
+
+mysql> start transaction;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> UPDATE accounts
+    -> SET balance = balance - 10000
+    -> WHERE account_id = 1;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM accounts;
++------------+----------------+----------+
+| account_id | account_holder | balance  |
++------------+----------------+----------+
+|          1 | Arun           | 35000.00 |
+|          2 | Priya          | 35000.00 |
++------------+----------------+----------+
+2 rows in set (0.00 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> SELECT * FROM accounts;
++------------+----------------+----------+
+| account_id | account_holder | balance  |
++------------+----------------+----------+
+|          1 | Arun           | 45000.00 |
+|          2 | Priya          | 35000.00 |
++------------+----------------+----------+
+2 rows in set (0.00 sec)
+
 mysql> 

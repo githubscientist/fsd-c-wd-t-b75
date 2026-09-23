@@ -1161,4 +1161,474 @@ mysql> SELECT * FROM accounts;
 +------------+----------------+----------+
 2 rows in set (0.00 sec)
 
+mysql> select * from departments;
+ERROR 4031 (HY000): The client was disconnected by the server because of inactivity. See wait_timeout and interactive_timeout for configuring this behavior.
+No connection. Trying to reconnect...
+Connection id:    14
+Current database: company_db
+
++---------------+-----------------+------------+
+| department_id | department_name | location   |
++---------------+-----------------+------------+
+|             1 | Engineering     | Chennai    |
+|             2 | HR              | Coimbatore |
+|             3 | Finance         | Bangalore  |
+|             4 | Sales           | Hyderabad  |
++---------------+-----------------+------------+
+4 rows in set (0.09 sec)
+
+mysql> select * from employees;
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+| employee_id | employee_name | email             | salary   | age  | city       | department_id | joining_date |
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+|         101 | Arun          | arun@gmail.com    | 65000.00 |   28 | Chennai    |             1 | 2023-01-15   |
+|         102 | Priya         | priya@gmail.com   | 75000.00 |   30 | Coimbatore |             1 | 2022-06-10   |
+|         103 | Karthik       | karthik@gmail.com | 45000.00 |   25 | Madurai    |             2 | 2024-02-20   |
+|         104 | Meena         | meena@gmail.com   | 55000.00 |   32 | Bangalore  |             3 | 2021-10-05   |
+|         105 | Vijay         | vijay@gmail.com   | 40000.00 |   27 | Chennai    |             4 | 2023-08-11   |
+|         106 | Divya         | divya@gmail.com   | 80000.00 |   35 | Coimbatore |             1 | 2020-04-15   |
+|         107 | Rahul         | rahul@gmail.com   | 50000.00 |   29 | Hyderabad  |             4 | 2022-12-01   |
+|         108 | Sneha         | sneha@gmail.com   | 60000.00 |   26 | Chennai    |          NULL | 2024-05-12   |
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+8 rows in set (0.00 sec)
+
+mysql> select * from employees where city='Coimbatore';
++-------------+---------------+-----------------+----------+------+------------+---------------+--------------+
+| employee_id | employee_name | email           | salary   | age  | city       | department_id | joining_date |
++-------------+---------------+-----------------+----------+------+------------+---------------+--------------+
+|         102 | Priya         | priya@gmail.com | 75000.00 |   30 | Coimbatore |             1 | 2022-06-10   |
+|         106 | Divya         | divya@gmail.com | 80000.00 |   35 | Coimbatore |             1 | 2020-04-15   |
++-------------+---------------+-----------------+----------+------+------------+---------------+--------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from employees where age>=30;
++-------------+---------------+-----------------+----------+------+------------+---------------+--------------+
+| employee_id | employee_name | email           | salary   | age  | city       | department_id | joining_date |
++-------------+---------------+-----------------+----------+------+------------+---------------+--------------+
+|         102 | Priya         | priya@gmail.com | 75000.00 |   30 | Coimbatore |             1 | 2022-06-10   |
+|         104 | Meena         | meena@gmail.com | 55000.00 |   32 | Bangalore  |             3 | 2021-10-05   |
+|         106 | Divya         | divya@gmail.com | 80000.00 |   35 | Coimbatore |             1 | 2020-04-15   |
++-------------+---------------+-----------------+----------+------+------------+---------------+--------------+
+3 rows in set (0.00 sec)
+
+mysql> mysql> select * from employees where age>=30 and city='Coimbatore';
++-------------+---------------+-----------------+----------+------+------------+---------------+--------------+
+| employee_id | employee_name | email           | salary   | age  | city       | department_id | joining_date |
++-------------+---------------+-----------------+----------+------+------------+---------------+--------------+
+|         102 | Priya         | priya@gmail.com | 75000.00 |   30 | Coimbatore |             1 | 2022-06-10   |
+|         106 | Divya         | divya@gmail.com | 80000.00 |   35 | Coimbatore |             1 | 2020-04-15   |
++-------------+---------------+-----------------+----------+------+------------+---------------+--------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from employees;
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+| employee_id | employee_name | email             | salary   | age  | city       | department_id | joining_date |
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+|         101 | Arun          | arun@gmail.com    | 65000.00 |   28 | Chennai    |             1 | 2023-01-15   |
+|         102 | Priya         | priya@gmail.com   | 75000.00 |   30 | Coimbatore |             1 | 2022-06-10   |
+|         103 | Karthik       | karthik@gmail.com | 45000.00 |   25 | Madurai    |             2 | 2024-02-20   |
+|         104 | Meena         | meena@gmail.com   | 55000.00 |   32 | Bangalore  |             3 | 2021-10-05   |
+|         105 | Vijay         | vijay@gmail.com   | 40000.00 |   27 | Chennai    |             4 | 2023-08-11   |
+|         106 | Divya         | divya@gmail.com   | 80000.00 |   35 | Coimbatore |             1 | 2020-04-15   |
+|         107 | Rahul         | rahul@gmail.com   | 50000.00 |   29 | Hyderabad  |             4 | 2022-12-01   |
+|         108 | Sneha         | sneha@gmail.com   | 60000.00 |   26 | Chennai    |          NULL | 2024-05-12   |
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+8 rows in set (0.00 sec)
+
+mysql> select * from employees order by age asc;
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+| employee_id | employee_name | email             | salary   | age  | city       | department_id | joining_date |
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+|         103 | Karthik       | karthik@gmail.com | 45000.00 |   25 | Madurai    |             2 | 2024-02-20   |
+|         108 | Sneha         | sneha@gmail.com   | 60000.00 |   26 | Chennai    |          NULL | 2024-05-12   |
+|         105 | Vijay         | vijay@gmail.com   | 40000.00 |   27 | Chennai    |             4 | 2023-08-11   |
+|         101 | Arun          | arun@gmail.com    | 65000.00 |   28 | Chennai    |             1 | 2023-01-15   |
+|         107 | Rahul         | rahul@gmail.com   | 50000.00 |   29 | Hyderabad  |             4 | 2022-12-01   |
+|         102 | Priya         | priya@gmail.com   | 75000.00 |   30 | Coimbatore |             1 | 2022-06-10   |
+|         104 | Meena         | meena@gmail.com   | 55000.00 |   32 | Bangalore  |             3 | 2021-10-05   |
+|         106 | Divya         | divya@gmail.com   | 80000.00 |   35 | Coimbatore |             1 | 2020-04-15   |
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+8 rows in set (0.00 sec)
+
+mysql> select * from employees order by age desc;
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+| employee_id | employee_name | email             | salary   | age  | city       | department_id | joining_date |
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+|         106 | Divya         | divya@gmail.com   | 80000.00 |   35 | Coimbatore |             1 | 2020-04-15   |
+|         104 | Meena         | meena@gmail.com   | 55000.00 |   32 | Bangalore  |             3 | 2021-10-05   |
+|         102 | Priya         | priya@gmail.com   | 75000.00 |   30 | Coimbatore |             1 | 2022-06-10   |
+|         107 | Rahul         | rahul@gmail.com   | 50000.00 |   29 | Hyderabad  |             4 | 2022-12-01   |
+|         101 | Arun          | arun@gmail.com    | 65000.00 |   28 | Chennai    |             1 | 2023-01-15   |
+|         105 | Vijay         | vijay@gmail.com   | 40000.00 |   27 | Chennai    |             4 | 2023-08-11   |
+|         108 | Sneha         | sneha@gmail.com   | 60000.00 |   26 | Chennai    |          NULL | 2024-05-12   |
+|         103 | Karthik       | karthik@gmail.com | 45000.00 |   25 | Madurai    |             2 | 2024-02-20   |
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+8 rows in set (0.00 sec)
+
+mysql> mysql> select * from employees order by age desc, salary asc;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'dy age desc, salary asc' at line 1
+mysql> select * from employees order by age desc, salary asc;
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+| employee_id | employee_name | email             | salary   | age  | city       | department_id | joining_date |
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+|         106 | Divya         | divya@gmail.com   | 80000.00 |   35 | Coimbatore |             1 | 2020-04-15   |
+|         104 | Meena         | meena@gmail.com   | 55000.00 |   32 | Bangalore  |             3 | 2021-10-05   |
+|         102 | Priya         | priya@gmail.com   | 75000.00 |   30 | Coimbatore |             1 | 2022-06-10   |
+|         107 | Rahul         | rahul@gmail.com   | 50000.00 |   29 | Hyderabad  |             4 | 2022-12-01   |
+|         101 | Arun          | arun@gmail.com    | 65000.00 |   28 | Chennai    |             1 | 2023-01-15   |
+|         105 | Vijay         | vijay@gmail.com   | 40000.00 |   27 | Chennai    |             4 | 2023-08-11   |
+|         108 | Sneha         | sneha@gmail.com   | 60000.00 |   26 | Chennai    |          NULL | 2024-05-12   |
+|         103 | Karthik       | karthik@gmail.com | 45000.00 |   25 | Madurai    |             2 | 2024-02-20   |
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+8 rows in set (0.00 sec)
+
+mysql> select * from employees order by salary asc;
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+| employee_id | employee_name | email             | salary   | age  | city       | department_id | joining_date |
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+|         105 | Vijay         | vijay@gmail.com   | 40000.00 |   27 | Chennai    |             4 | 2023-08-11   |
+|         103 | Karthik       | karthik@gmail.com | 45000.00 |   25 | Madurai    |             2 | 2024-02-20   |
+|         107 | Rahul         | rahul@gmail.com   | 50000.00 |   29 | Hyderabad  |             4 | 2022-12-01   |
+|         104 | Meena         | meena@gmail.com   | 55000.00 |   32 | Bangalore  |             3 | 2021-10-05   |
+|         108 | Sneha         | sneha@gmail.com   | 60000.00 |   26 | Chennai    |          NULL | 2024-05-12   |
+|         101 | Arun          | arun@gmail.com    | 65000.00 |   28 | Chennai    |             1 | 2023-01-15   |
+|         102 | Priya         | priya@gmail.com   | 75000.00 |   30 | Coimbatore |             1 | 2022-06-10   |
+|         106 | Divya         | divya@gmail.com   | 80000.00 |   35 | Coimbatore |             1 | 2020-04-15   |
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+8 rows in set (0.00 sec)
+
+mysql> select * from employees order by age desc, salary asc;
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+| employee_id | employee_name | email             | salary   | age  | city       | department_id | joining_date |
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+|         106 | Divya         | divya@gmail.com   | 80000.00 |   35 | Coimbatore |             1 | 2020-04-15   |
+|         104 | Meena         | meena@gmail.com   | 55000.00 |   32 | Bangalore  |             3 | 2021-10-05   |
+|         102 | Priya         | priya@gmail.com   | 75000.00 |   30 | Coimbatore |             1 | 2022-06-10   |
+|         107 | Rahul         | rahul@gmail.com   | 50000.00 |   29 | Hyderabad  |             4 | 2022-12-01   |
+|         101 | Arun          | arun@gmail.com    | 65000.00 |   28 | Chennai    |             1 | 2023-01-15   |
+|         105 | Vijay         | vijay@gmail.com   | 40000.00 |   27 | Chennai    |             4 | 2023-08-11   |
+|         108 | Sneha         | sneha@gmail.com   | 60000.00 |   26 | Chennai    |          NULL | 2024-05-12   |
+|         103 | Karthik       | karthik@gmail.com | 45000.00 |   25 | Madurai    |             2 | 2024-02-20   |
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+8 rows in set (0.00 sec)
+
+mysql> describe employees;
++---------------+---------------+------+-----+---------+-------+
+| Field         | Type          | Null | Key | Default | Extra |
++---------------+---------------+------+-----+---------+-------+
+| employee_id   | int           | NO   | PRI | NULL    |       |
+| employee_name | varchar(100)  | NO   |     | NULL    |       |
+| email         | varchar(100)  | YES  | UNI | NULL    |       |
+| salary        | decimal(10,2) | YES  |     | NULL    |       |
+| age           | int           | YES  |     | NULL    |       |
+| city          | varchar(50)   | YES  |     | NULL    |       |
+| department_id | int           | YES  | MUL | NULL    |       |
+| joining_date  | date          | YES  |     | NULL    |       |
++---------------+---------------+------+-----+---------+-------+
+8 rows in set (0.01 sec)
+
+mysql> insert into employees values 
+    -> (109, Sathish, sathish
+    -> @gmail.com
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '@gmail.com' at line 3
+mysql> insert into employees values  (109, 'Sathish', 'sathish@gmail.com', 50000, 35, 'Madurai
+    '> ', 4, '2020-04-16');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from employees;                                                                                  
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+| employee_id | employee_name | email             | salary   | age  | city       | department_id | joining_date |
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+|         101 | Arun          | arun@gmail.com    | 65000.00 |   28 | Chennai    |             1 | 2023-01-15   |
+|         102 | Priya         | priya@gmail.com   | 75000.00 |   30 | Coimbatore |             1 | 2022-06-10   |
+|         103 | Karthik       | karthik@gmail.com | 45000.00 |   25 | Madurai    |             2 | 2024-02-20   |
+|         104 | Meena         | meena@gmail.com   | 55000.00 |   32 | Bangalore  |             3 | 2021-10-05   |
+|         105 | Vijay         | vijay@gmail.com   | 40000.00 |   27 | Chennai    |             4 | 2023-08-11   |
+|         106 | Divya         | divya@gmail.com   | 80000.00 |   35 | Coimbatore |             1 | 2020-04-15   |
+|         107 | Rahul         | rahul@gmail.com   | 50000.00 |   29 | Hyderabad  |             4 | 2022-12-01   |
+|         108 | Sneha         | sneha@gmail.com   | 60000.00 |   26 | Chennai    |          NULL | 2024-05-12   |
+|         109 | Sathish       | sathish@gmail.com | 50000.00 |   35 | Madurai
+   |             4 | 2020-04-16   |
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+9 rows in set (0.00 sec)
+
+mysql> update employees set city='Madurai' where employee_id=109;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from employees;
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+| employee_id | employee_name | email             | salary   | age  | city       | department_id | joining_date |
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+|         101 | Arun          | arun@gmail.com    | 65000.00 |   28 | Chennai    |             1 | 2023-01-15   |
+|         102 | Priya         | priya@gmail.com   | 75000.00 |   30 | Coimbatore |             1 | 2022-06-10   |
+|         103 | Karthik       | karthik@gmail.com | 45000.00 |   25 | Madurai    |             2 | 2024-02-20   |
+|         104 | Meena         | meena@gmail.com   | 55000.00 |   32 | Bangalore  |             3 | 2021-10-05   |
+|         105 | Vijay         | vijay@gmail.com   | 40000.00 |   27 | Chennai    |             4 | 2023-08-11   |
+|         106 | Divya         | divya@gmail.com   | 80000.00 |   35 | Coimbatore |             1 | 2020-04-15   |
+|         107 | Rahul         | rahul@gmail.com   | 50000.00 |   29 | Hyderabad  |             4 | 2022-12-01   |
+|         108 | Sneha         | sneha@gmail.com   | 60000.00 |   26 | Chennai    |          NULL | 2024-05-12   |
+|         109 | Sathish       | sathish@gmail.com | 50000.00 |   35 | Madurai    |             4 | 2020-04-16   |
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+9 rows in set (0.00 sec)
+
+mysql> select * from employees order by age desc;
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+| employee_id | employee_name | email             | salary   | age  | city       | department_id | joining_date |
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+|         106 | Divya         | divya@gmail.com   | 80000.00 |   35 | Coimbatore |             1 | 2020-04-15   |
+|         109 | Sathish       | sathish@gmail.com | 50000.00 |   35 | Madurai    |             4 | 2020-04-16   |
+|         104 | Meena         | meena@gmail.com   | 55000.00 |   32 | Bangalore  |             3 | 2021-10-05   |
+|         102 | Priya         | priya@gmail.com   | 75000.00 |   30 | Coimbatore |             1 | 2022-06-10   |
+|         107 | Rahul         | rahul@gmail.com   | 50000.00 |   29 | Hyderabad  |             4 | 2022-12-01   |
+|         101 | Arun          | arun@gmail.com    | 65000.00 |   28 | Chennai    |             1 | 2023-01-15   |
+|         105 | Vijay         | vijay@gmail.com   | 40000.00 |   27 | Chennai    |             4 | 2023-08-11   |
+|         108 | Sneha         | sneha@gmail.com   | 60000.00 |   26 | Chennai    |          NULL | 2024-05-12   |
+|         103 | Karthik       | karthik@gmail.com | 45000.00 |   25 | Madurai    |             2 | 2024-02-20   |
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+9 rows in set (0.00 sec)
+
+mysql> select * from employees order by age desc, salary asc;
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+| employee_id | employee_name | email             | salary   | age  | city       | department_id | joining_date |
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+|         109 | Sathish       | sathish@gmail.com | 50000.00 |   35 | Madurai    |             4 | 2020-04-16   |
+|         106 | Divya         | divya@gmail.com   | 80000.00 |   35 | Coimbatore |             1 | 2020-04-15   |
+|         104 | Meena         | meena@gmail.com   | 55000.00 |   32 | Bangalore  |             3 | 2021-10-05   |
+|         102 | Priya         | priya@gmail.com   | 75000.00 |   30 | Coimbatore |             1 | 2022-06-10   |
+|         107 | Rahul         | rahul@gmail.com   | 50000.00 |   29 | Hyderabad  |             4 | 2022-12-01   |
+|         101 | Arun          | arun@gmail.com    | 65000.00 |   28 | Chennai    |             1 | 2023-01-15   |
+|         105 | Vijay         | vijay@gmail.com   | 40000.00 |   27 | Chennai    |             4 | 2023-08-11   |
+|         108 | Sneha         | sneha@gmail.com   | 60000.00 |   26 | Chennai    |          NULL | 2024-05-12   |
+|         103 | Karthik       | karthik@gmail.com | 45000.00 |   25 | Madurai    |             2 | 2024-02-20   |
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+9 rows in set (0.00 sec)
+
+mysql> select * from products;
+ERROR 1146 (42S02): Table 'company_db.products' doesn't exist
+mysql> use ecommerce;
+ERROR 1049 (42000): Unknown database 'ecommerce'
+mysql> show tables;
++----------------------+
+| Tables_in_company_db |
++----------------------+
+| accounts             |
+| departments          |
+| employees            |
+| mentor               |
+| student              |
++----------------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from employees;
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+| employee_id | employee_name | email             | salary   | age  | city       | department_id | joining_date |
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+|         101 | Arun          | arun@gmail.com    | 65000.00 |   28 | Chennai    |             1 | 2023-01-15   |
+|         102 | Priya         | priya@gmail.com   | 75000.00 |   30 | Coimbatore |             1 | 2022-06-10   |
+|         103 | Karthik       | karthik@gmail.com | 45000.00 |   25 | Madurai    |             2 | 2024-02-20   |
+|         104 | Meena         | meena@gmail.com   | 55000.00 |   32 | Bangalore  |             3 | 2021-10-05   |
+|         105 | Vijay         | vijay@gmail.com   | 40000.00 |   27 | Chennai    |             4 | 2023-08-11   |
+|         106 | Divya         | divya@gmail.com   | 80000.00 |   35 | Coimbatore |             1 | 2020-04-15   |
+|         107 | Rahul         | rahul@gmail.com   | 50000.00 |   29 | Hyderabad  |             4 | 2022-12-01   |
+|         108 | Sneha         | sneha@gmail.com   | 60000.00 |   26 | Chennai    |          NULL | 2024-05-12   |
+|         109 | Sathish       | sathish@gmail.com | 50000.00 |   35 | Madurai    |             4 | 2020-04-16   |
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+9 rows in set (0.00 sec)
+
+mysql> create unique index idx_email on employees (email);
+Query OK, 0 rows affected, 1 warning (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 1
+
+mysql> select * from employees where email='vijay@gmail.com';
++-------------+---------------+-----------------+----------+------+---------+---------------+--------------+
+| employee_id | employee_name | email           | salary   | age  | city    | department_id | joining_date |
++-------------+---------------+-----------------+----------+------+---------+---------------+--------------+
+|         105 | Vijay         | vijay@gmail.com | 40000.00 |   27 | Chennai |             4 | 2023-08-11   |
++-------------+---------------+-----------------+----------+------+---------+---------------+--------------+
+1 row in set (0.00 sec)
+
+mysql> select * from employees where age>30;
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+| employee_id | employee_name | email             | salary   | age  | city       | department_id | joining_date |
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+|         104 | Meena         | meena@gmail.com   | 55000.00 |   32 | Bangalore  |             3 | 2021-10-05   |
+|         106 | Divya         | divya@gmail.com   | 80000.00 |   35 | Coimbatore |             1 | 2020-04-15   |
+|         109 | Sathish       | sathish@gmail.com | 50000.00 |   35 | Madurai    |             4 | 2020-04-16   |
++-------------+---------------+-------------------+----------+------+------------+---------------+--------------+
+3 rows in set (0.00 sec)
+
+mysql> show index from employees;
++-----------+------------+---------------+--------------+---------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| Table     | Non_unique | Key_name      | Seq_in_index | Column_name   | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment | Visible | Expression |
++-----------+------------+---------------+--------------+---------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| employees |          0 | PRIMARY       |            1 | employee_id   | A         |           9 |     NULL |   NULL |      | BTREE      |         |               | YES     | NULL       |
+| employees |          0 | email         |            1 | email         | A         |           9 |     NULL |   NULL | YES  | BTREE      |         |               | YES     | NULL       |
+| employees |          0 | idx_email     |            1 | email         | A         |           9 |     NULL |   NULL | YES  | BTREE      |         |               | YES     | NULL       |
+| employees |          1 | department_id |            1 | department_id | A         |           5 |     NULL |   NULL | YES  | BTREE      |         |               | YES     | NULL       |
++-----------+------------+---------------+--------------+---------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+4 rows in set (0.01 sec)
+
+mysql> select index_name from information_schema.statistics where table_schema = database() and table_name = 'employees' order by index_name, seq_in_index
+    -> ;
++---------------+
+| INDEX_NAME    |
++---------------+
+| department_id |
+| email         |
+| idx_email     |
+| PRIMARY       |
++---------------+
+4 rows in set (0.01 sec)
+
+mysql> SELECT
+    ->     INDEX_NAME,
+    ->     COLUMN_NAME,
+    ->     SEQ_IN_INDEX,
+    ->     NON_UNIQUE,
+    ->     CARDINALITY
+    -> FROM INFORMATION_SCHEMA.STATISTICS
+    -> WHERE TABLE_SCHEMA = DATABASE()
+    ->   AND TABLE_NAME = 'users'
+    -> ORDER BY INDEX_NAME, SEQ_IN_INDEX;
+Empty set (0.00 sec)
+
+mysql> SELECT     INDEX_NAME,     COLUMN_NAME,     SEQ_IN_INDEX,     NON_UNIQUE,     CARDINALITY FROM INFORMATION_SCHEMA.STATISTICS WHERE TABLE_SCHEMA = DATABASE()   AND TABLE_NAME = 'employees' ORDER BY INDEX_NAME, SEQ_IN_INDEX;
++---------------+---------------+--------------+------------+-------------+
+| INDEX_NAME    | COLUMN_NAME   | SEQ_IN_INDEX | NON_UNIQUE | CARDINALITY |
++---------------+---------------+--------------+------------+-------------+
+| department_id | department_id |            1 |          1 |           5 |
+| email         | email         |            1 |          0 |           9 |
+| idx_email     | email         |            1 |          0 |           9 |
+| PRIMARY       | employee_id   |            1 |          0 |           9 |
++---------------+---------------+--------------+------------+-------------+
+4 rows in set (0.01 sec)
+
+mysql> explain analyze select * from employees where email='vijay@gmail.com';
++---------------------------------------------------------------------------------------------------+
+| EXPLAIN                                                                                           |
++---------------------------------------------------------------------------------------------------+
+| -> Rows fetched before execution  (cost=0..0 rows=1) (actual time=167e-6..208e-6 rows=1 loops=1)
+ |
++---------------------------------------------------------------------------------------------------+
+1 row in set (0.01 sec)
+
+mysql> drop index idx_email on employees;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> show index from employees;
++-----------+------------+---------------+--------------+---------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| Table     | Non_unique | Key_name      | Seq_in_index | Column_name   | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment | Visible | Expression |
++-----------+------------+---------------+--------------+---------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| employees |          0 | PRIMARY       |            1 | employee_id   | A         |           9 |     NULL |   NULL |      | BTREE      |         |               | YES     | NULL       |
+| employees |          0 | email         |            1 | email         | A         |           9 |     NULL |   NULL | YES  | BTREE      |         |               | YES     | NULL       |
+| employees |          1 | department_id |            1 | department_id | A         |           5 |     NULL |   NULL | YES  | BTREE      |         |               | YES     | NULL       |
++-----------+------------+---------------+--------------+---------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+3 rows in set (0.00 sec)
+
+mysql> show tables;
++----------------------+
+| Tables_in_company_db |
++----------------------+
+| accounts             |
+| departments          |
+| employees            |
+| mentor               |
+| student              |
++----------------------+
+5 rows in set (0.01 sec)
+
+mysql> describe accounts;
++----------------+---------------+------+-----+---------+-------+
+| Field          | Type          | Null | Key | Default | Extra |
++----------------+---------------+------+-----+---------+-------+
+| account_id     | int           | NO   | PRI | NULL    |       |
+| account_holder | varchar(100)  | YES  |     | NULL    |       |
+| balance        | decimal(10,2) | YES  |     | NULL    |       |
++----------------+---------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> select * from accounts;
++------------+----------------+----------+
+| account_id | account_holder | balance  |
++------------+----------------+----------+
+|          1 | Arun           | 45000.00 |
+|          2 | Priya          | 35000.00 |
++------------+----------------+----------+
+2 rows in set (0.01 sec)
+
+mysql> start transaction;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> update accounts set balance=balance-10000 where account_id=1;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from accounts;
++------------+----------------+----------+
+| account_id | account_holder | balance  |
++------------+----------------+----------+
+|          1 | Arun           | 35000.00 |
+|          2 | Priya          | 35000.00 |
++------------+----------------+----------+
+2 rows in set (0.00 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from accounts;
++------------+----------------+----------+
+| account_id | account_holder | balance  |
++------------+----------------+----------+
+|          1 | Arun           | 45000.00 |
+|          2 | Priya          | 35000.00 |
++------------+----------------+----------+
+2 rows in set (0.00 sec)
+
+mysql> start transaction;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> update accounts set balance=balance-10000 where account_id=1;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update accounts set balance=balance+10000 where account_id=2;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> commit;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from accounts;
++------------+----------------+----------+
+| account_id | account_holder | balance  |
++------------+----------------+----------+
+|          1 | Arun           | 35000.00 |
+|          2 | Priya          | 45000.00 |
++------------+----------------+----------+
+2 rows in set (0.00 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from accounts;
++------------+----------------+----------+
+| account_id | account_holder | balance  |
++------------+----------------+----------+
+|          1 | Arun           | 35000.00 |
+|          2 | Priya          | 45000.00 |
++------------+----------------+----------+
+2 rows in set (0.00 sec)
+
+mysql> select * from employees limit 2;
++-------------+---------------+-----------------+----------+------+------------+---------------+--------------+
+| employee_id | employee_name | email           | salary   | age  | city       | department_id | joining_date |
++-------------+---------------+-----------------+----------+------+------------+---------------+--------------+
+|         101 | Arun          | arun@gmail.com  | 65000.00 |   28 | Chennai    |             1 | 2023-01-15   |
+|         102 | Priya         | priya@gmail.com | 75000.00 |   30 | Coimbatore |             1 | 2022-06-10   |
++-------------+---------------+-----------------+----------+------+------------+---------------+--------------+
+2 rows in set (0.00 sec)
+
 mysql> 

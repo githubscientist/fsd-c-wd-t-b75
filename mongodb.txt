@@ -314,3 +314,803 @@ db.departments.deleteOne(
   deletedCount: 1
 }
 db.departments.find();
+
+db.createCollection("employees");
+{ ok: 1 }
+show collections;
+departments
+employees
+db.employees.insertMany([
+    {
+        employee_id: 101,
+        employee_name: "Arun",
+        email: "arun@gmail.com",
+        salary: 65000.00,
+        age: 28,
+        city: "Chennai",
+        department_id: 1,
+        joining_date: "2023-01-15"
+    },
+    {
+        employee_id: 102,
+        employee_name: "Priya",
+        email: "priya@gmail.com",
+        salary: 75000.00,
+        age: 30,
+        city: "Coimbatore",
+        department_id: 1,
+        joining_date: "2022-06-10"
+    },
+    {
+        employee_id: 103,
+        employee_name: "Karthik",
+        email: "karthik@gmail.com",
+        salary: 45000.00,
+        age: 25,
+        city: "Madurai",
+        department_id: 2,
+        joining_date: "2024-02-20"
+    },
+    {
+        employee_id: 104,
+        employee_name: "Meena",
+        email: "meena@gmail.com",
+        salary: 55000.00,
+        age: 32,
+        city: "Bangalore",
+        department_id: 3,
+        joining_date: "2021-10-05"
+    },
+    {
+        employee_id: 105,
+        employee_name: "Vijay",
+        email: "vijay@gmail.com",
+        salary: 40000.00,
+        age: 27,
+        city: "Chennai",
+        department_id: 4,
+        joining_date: "2023-08-11"
+    },
+    {
+        employee_id: 106,
+        employee_name: "Divya",
+        email: "divya@gmail.com",
+        salary: 80000.00,
+        age: 35,
+        city: "Coimbatore",
+        department_id: 1,
+        joining_date: "2020-04-15"
+    },
+    {
+        employee_id: 107,
+        employee_name: "Rahul",
+        email: "rahul@gmail.com",
+        salary: 50000.00,
+        age: 29,
+        city: "Hyderabad",
+        department_id: 4,
+        joining_date: "2022-12-01"
+    },
+    {
+        employee_id: 108,
+        employee_name: "Sneha",
+        email: "sneha@gmail.com",
+        salary: 60000.00,
+        age: 26,
+        city: "Chennai",
+        department_id: null,
+        joining_date: "2024-05-12"
+    }
+]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6ab3cb95a0e53ee4b1c66efc'),
+    '1': ObjectId('6ab3cb95a0e53ee4b1c66efd'),
+    '2': ObjectId('6ab3cb95a0e53ee4b1c66efe'),
+    '3': ObjectId('6ab3cb95a0e53ee4b1c66eff'),
+    '4': ObjectId('6ab3cb95a0e53ee4b1c66f00'),
+    '5': ObjectId('6ab3cb95a0e53ee4b1c66f01'),
+    '6': ObjectId('6ab3cb95a0e53ee4b1c66f02'),
+    '7': ObjectId('6ab3cb95a0e53ee4b1c66f03')
+  }
+}
+db.employees.find({
+    age: {
+        $gte: 30
+    }
+});
+{
+  _id: ObjectId('6ab3cb95a0e53ee4b1c66efd'),
+  employee_id: 102,
+  employee_name: 'Priya',
+  email: 'priya@gmail.com',
+  salary: 75000,
+  age: 30,
+  city: 'Coimbatore',
+  department_id: 1,
+  joining_date: '2022-06-10'
+}
+{
+  _id: ObjectId('6ab3cb95a0e53ee4b1c66eff'),
+  employee_id: 104,
+  employee_name: 'Meena',
+  email: 'meena@gmail.com',
+  salary: 55000,
+  age: 32,
+  city: 'Bangalore',
+  department_id: 3,
+  joining_date: '2021-10-05'
+}
+{
+  _id: ObjectId('6ab3cb95a0e53ee4b1c66f01'),
+  employee_id: 106,
+  employee_name: 'Divya',
+  email: 'divya@gmail.com',
+  salary: 80000,
+  age: 35,
+  city: 'Coimbatore',
+  department_id: 1,
+  joining_date: '2020-04-15'
+}
+db.employees.find({
+    $and: [
+        {
+            age: {
+                $gte: 30
+            },
+            city: "Coimbatore"
+        }
+    ]
+});
+{
+  _id: ObjectId('6ab3cb95a0e53ee4b1c66efd'),
+  employee_id: 102,
+  employee_name: 'Priya',
+  email: 'priya@gmail.com',
+  salary: 75000,
+  age: 30,
+  city: 'Coimbatore',
+  department_id: 1,
+  joining_date: '2022-06-10'
+}
+{
+  _id: ObjectId('6ab3cb95a0e53ee4b1c66f01'),
+  employee_id: 106,
+  employee_name: 'Divya',
+  email: 'divya@gmail.com',
+  salary: 80000,
+  age: 35,
+  city: 'Coimbatore',
+  department_id: 1,
+  joining_date: '2020-04-15'
+}
+use ecommerce;
+switched to db ecommerce
+db.products.insertMany([
+    {
+        productId: 101,
+        name: "Laptop",
+        category: "Electronics",
+        brand: "Dell",
+        price: 65000,
+        stock: 20
+    },
+    {
+        productId: 102,
+        name: "Smartphone",
+        category: "Electronics",
+        brand: "Samsung",
+        price: 35000,
+        stock: 50
+    },
+    {
+        productId: 103,
+        name: "Keyboard",
+        category: "Accessories",
+        brand: "Logitech",
+        price: 2500,
+        stock: 100
+    },
+    {
+        productId: 104,
+        name: "Mouse",
+        category: "Accessories",
+        brand: "Logitech",
+        price: 1200,
+        stock: 80
+    },
+    {
+        productId: 105,
+        name: "Monitor",
+        category: "Electronics",
+        brand: "LG",
+        price: 18000,
+        stock: 35
+    }
+])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6ab3cdeba0e53ee4b1c66f04'),
+    '1': ObjectId('6ab3cdeba0e53ee4b1c66f05'),
+    '2': ObjectId('6ab3cdeba0e53ee4b1c66f06'),
+    '3': ObjectId('6ab3cdeba0e53ee4b1c66f07'),
+    '4': ObjectId('6ab3cdeba0e53ee4b1c66f08')
+  }
+}
+db.customers.insertMany([
+    {
+        customerId: 1,
+        name: "Arun",
+        email: "arun@example.com",
+        city: "Chennai"
+    },
+    {
+        customerId: 2,
+        name: "Priya",
+        email: "priya@example.com",
+        city: "Coimbatore"
+    },
+    {
+        customerId: 3,
+        name: "Rahul",
+        email: "rahul@example.com",
+        city: "Bangalore"
+    }
+])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6ab3cdfaa0e53ee4b1c66f09'),
+    '1': ObjectId('6ab3cdfaa0e53ee4b1c66f0a'),
+    '2': ObjectId('6ab3cdfaa0e53ee4b1c66f0b')
+  }
+}
+db.orders.insertMany([
+    {
+        orderId: 1001,
+        customerId: 1,
+        items: [
+            {
+                productId: 101,
+                quantity: 1,
+                price: 65000
+            }
+        ],
+        totalAmount: 65000,
+        status: "Delivered",
+        orderDate: new Date("2026-09-15")
+    },
+    {
+        orderId: 1002,
+        customerId: 2,
+        items: [
+            {
+                productId: 103,
+                quantity: 2,
+                price: 2500
+            }
+        ],
+        totalAmount: 5000,
+        status: "Pending",
+        orderDate: new Date("2026-09-20")
+    }
+])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6ab3ce0aa0e53ee4b1c66f0c'),
+    '1': ObjectId('6ab3ce0aa0e53ee4b1c66f0d')
+  }
+}
+show collections;
+customers
+orders
+products
+use ecommerce;
+already on db ecommerce
+show collections;
+customers
+orders
+products
+db.customers.find();
+{
+  _id: ObjectId('6ab3cdfaa0e53ee4b1c66f09'),
+  customerId: 1,
+  name: 'Arun',
+  email: 'arun@example.com',
+  city: 'Chennai'
+}
+{
+  _id: ObjectId('6ab3cdfaa0e53ee4b1c66f0a'),
+  customerId: 2,
+  name: 'Priya',
+  email: 'priya@example.com',
+  city: 'Coimbatore'
+}
+{
+  _id: ObjectId('6ab3cdfaa0e53ee4b1c66f0b'),
+  customerId: 3,
+  name: 'Rahul',
+  email: 'rahul@example.com',
+  city: 'Bangalore'
+}
+db.products.find();
+{
+  _id: ObjectId('6ab3cdeba0e53ee4b1c66f04'),
+  productId: 101,
+  name: 'Laptop',
+  category: 'Electronics',
+  brand: 'Dell',
+  price: 65000,
+  stock: 20
+}
+{
+  _id: ObjectId('6ab3cdeba0e53ee4b1c66f05'),
+  productId: 102,
+  name: 'Smartphone',
+  category: 'Electronics',
+  brand: 'Samsung',
+  price: 35000,
+  stock: 50
+}
+{
+  _id: ObjectId('6ab3cdeba0e53ee4b1c66f06'),
+  productId: 103,
+  name: 'Keyboard',
+  category: 'Accessories',
+  brand: 'Logitech',
+  price: 2500,
+  stock: 100
+}
+{
+  _id: ObjectId('6ab3cdeba0e53ee4b1c66f07'),
+  productId: 104,
+  name: 'Mouse',
+  category: 'Accessories',
+  brand: 'Logitech',
+  price: 1200,
+  stock: 80
+}
+{
+  _id: ObjectId('6ab3cdeba0e53ee4b1c66f08'),
+  productId: 105,
+  name: 'Monitor',
+  category: 'Electronics',
+  brand: 'LG',
+  price: 18000,
+  stock: 35
+}
+db.orders.find();
+{
+  _id: ObjectId('6ab3ce0aa0e53ee4b1c66f0c'),
+  orderId: 1001,
+  customerId: 1,
+  items: [
+    {
+      productId: 101,
+      quantity: 1,
+      price: 65000
+    }
+  ],
+  totalAmount: 65000,
+  status: 'Delivered',
+  orderDate: 2026-09-15T00:00:00.000Z
+}
+{
+  _id: ObjectId('6ab3ce0aa0e53ee4b1c66f0d'),
+  orderId: 1002,
+  customerId: 2,
+  items: [
+    {
+      productId: 103,
+      quantity: 2,
+      price: 2500
+    }
+  ],
+  totalAmount: 5000,
+  status: 'Pending',
+  orderDate: 2026-09-20T00:00:00.000Z
+}
+db.products.sort({
+    price: -1
+});
+TypeError: db.products.sort is not a function
+db.products.find().sort({ price: -1 });
+{
+  _id: ObjectId('6ab3cdeba0e53ee4b1c66f04'),
+  productId: 101,
+  name: 'Laptop',
+  category: 'Electronics',
+  brand: 'Dell',
+  price: 65000,
+  stock: 20
+}
+{
+  _id: ObjectId('6ab3cdeba0e53ee4b1c66f05'),
+  productId: 102,
+  name: 'Smartphone',
+  category: 'Electronics',
+  brand: 'Samsung',
+  price: 35000,
+  stock: 50
+}
+{
+  _id: ObjectId('6ab3cdeba0e53ee4b1c66f08'),
+  productId: 105,
+  name: 'Monitor',
+  category: 'Electronics',
+  brand: 'LG',
+  price: 18000,
+  stock: 35
+}
+{
+  _id: ObjectId('6ab3cdeba0e53ee4b1c66f06'),
+  productId: 103,
+  name: 'Keyboard',
+  category: 'Accessories',
+  brand: 'Logitech',
+  price: 2500,
+  stock: 100
+}
+{
+  _id: ObjectId('6ab3cdeba0e53ee4b1c66f07'),
+  productId: 104,
+  name: 'Mouse',
+  category: 'Accessories',
+  brand: 'Logitech',
+  price: 1200,
+  stock: 80
+}
+db.products.find().sort({ price: 1 });
+{
+  _id: ObjectId('6ab3cdeba0e53ee4b1c66f07'),
+  productId: 104,
+  name: 'Mouse',
+  category: 'Accessories',
+  brand: 'Logitech',
+  price: 1200,
+  stock: 80
+}
+{
+  _id: ObjectId('6ab3cdeba0e53ee4b1c66f06'),
+  productId: 103,
+  name: 'Keyboard',
+  category: 'Accessories',
+  brand: 'Logitech',
+  price: 2500,
+  stock: 100
+}
+{
+  _id: ObjectId('6ab3cdeba0e53ee4b1c66f08'),
+  productId: 105,
+  name: 'Monitor',
+  category: 'Electronics',
+  brand: 'LG',
+  price: 18000,
+  stock: 35
+}
+{
+  _id: ObjectId('6ab3cdeba0e53ee4b1c66f05'),
+  productId: 102,
+  name: 'Smartphone',
+  category: 'Electronics',
+  brand: 'Samsung',
+  price: 35000,
+  stock: 50
+}
+{
+  _id: ObjectId('6ab3cdeba0e53ee4b1c66f04'),
+  productId: 101,
+  name: 'Laptop',
+  category: 'Electronics',
+  brand: 'Dell',
+  price: 65000,
+  stock: 20
+}
+db.products.find().sort({ price: 1, brand: -1 });
+{
+  _id: ObjectId('6ab3cdeba0e53ee4b1c66f07'),
+  productId: 104,
+  name: 'Mouse',
+  category: 'Accessories',
+  brand: 'Logitech',
+  price: 1200,
+  stock: 80
+}
+{
+  _id: ObjectId('6ab3cdeba0e53ee4b1c66f06'),
+  productId: 103,
+  name: 'Keyboard',
+  category: 'Accessories',
+  brand: 'Logitech',
+  price: 2500,
+  stock: 100
+}
+{
+  _id: ObjectId('6ab3cdeba0e53ee4b1c66f08'),
+  productId: 105,
+  name: 'Monitor',
+  category: 'Electronics',
+  brand: 'LG',
+  price: 18000,
+  stock: 35
+}
+{
+  _id: ObjectId('6ab3cdeba0e53ee4b1c66f05'),
+  productId: 102,
+  name: 'Smartphone',
+  category: 'Electronics',
+  brand: 'Samsung',
+  price: 35000,
+  stock: 50
+}
+{
+  _id: ObjectId('6ab3cdeba0e53ee4b1c66f04'),
+  productId: 101,
+  name: 'Laptop',
+  category: 'Electronics',
+  brand: 'Dell',
+  price: 65000,
+  stock: 20
+}
+db.products.find({ category: 'Electronics'});
+{
+  _id: ObjectId('6ab3cdeba0e53ee4b1c66f04'),
+  productId: 101,
+  name: 'Laptop',
+  category: 'Electronics',
+  brand: 'Dell',
+  price: 65000,
+  stock: 20
+}
+{
+  _id: ObjectId('6ab3cdeba0e53ee4b1c66f05'),
+  productId: 102,
+  name: 'Smartphone',
+  category: 'Electronics',
+  brand: 'Samsung',
+  price: 35000,
+  stock: 50
+}
+{
+  _id: ObjectId('6ab3cdeba0e53ee4b1c66f08'),
+  productId: 105,
+  name: 'Monitor',
+  category: 'Electronics',
+  brand: 'LG',
+  price: 18000,
+  stock: 35
+}
+db.products.find({ category: 'Electronics'}).explain('executionStats');
+      nss: 'ecommerce.products',
+      direction: 'forward'
+    },
+    rejectedPlans: []
+  },
+  executionStats: {
+    executionSuccess: true,
+    nReturned: 3,
+    executionTimeMillis: 2,
+    totalKeysExamined: 0,
+    totalDocsExamined: 5,
+    executionStages: {
+      isCached: false,
+      stage: 'COLLSCAN',
+      filter: {
+        category: {
+          '$eq': 'Electronics'
+        }
+      },
+      nReturned: 3,
+      executionTimeMillisEstimate: 0,
+      works: 6,
+      advanced: 3,
+      needTime: 2,
+      needYield: 0,
+      saveState: 0,
+      restoreState: 0,
+      isEOF: 1,
+      nss: 'ecommerce.products',
+      direction: 'forward',
+      docsExamined: 5
+    }
+  },
+  queryShapeHash: 'E72CDEBFCA9E2C3AE6624E7A4CEC49E3EBD3ED29D820D02FA1D4859F517F2221',
+  command: {
+    find: 'products',
+    filter: {
+      category: 'Electronics'
+    },
+    '$db': 'ecommerce'
+  },
+  serverInfo: {
+    host: 'sathishs-MacBook-Pro.local',
+    port: 27017,
+    version: '8.3.3',
+    gitVersion: '3ef86ea0d67623e3f8299275cd6bd93e5f9454e6'
+  },
+  serverParameters: {
+    internalQueryFacetBufferSizeBytes: 104857600,
+    internalDocumentSourceGroupMaxMemoryBytes: 104857600,
+    internalQueryMaxBlockingSortMemoryUsageBytes: 104857600,
+    internalDocumentSourceSetWindowFieldsMaxMemoryBytes: 104857600,
+    internalQueryFacetMaxOutputDocSizeBytes: 104857600,
+    internalLookupStageIntermediateDocumentMaxSizeBytes: 104857600,
+    internalQueryProhibitBlockingMergeOnMongoS: 0,
+    internalQueryMaxAddToSetBytes: 104857600,
+    internalQueryFrameworkControl: 'trySbeRestricted',
+    internalQueryPlannerIgnoreIndexWithCollationForRegex: 1
+  },
+  ok: 1
+}
+db.products.createIndex({ category: 1 });
+category_1
+db.products.find({
+    category: "Electronics"
+}).explain("executionStats");
+        saveState: 0,
+        restoreState: 0,
+        isEOF: 1,
+        nss: 'ecommerce.products',
+        keyPattern: {
+          category: 1
+        },
+        indexName: 'category_1',
+        isMultiKey: false,
+        multiKeyPaths: {
+          category: []
+        },
+        isUnique: false,
+        isSparse: false,
+        isPartial: false,
+        indexVersion: 2,
+        direction: 'forward',
+        indexBounds: {
+          category: [
+            '["Electronics", "Electronics"]'
+          ]
+        },
+        keysExamined: 3,
+        seeks: 1,
+        dupsTested: 0,
+        dupsDropped: 0,
+        peakTrackedMemBytes: 0
+      }
+    }
+  },
+  queryShapeHash: 'E72CDEBFCA9E2C3AE6624E7A4CEC49E3EBD3ED29D820D02FA1D4859F517F2221',
+  command: {
+    find: 'products',
+    filter: {
+      category: 'Electronics'
+    },
+    '$db': 'ecommerce'
+  },
+  serverInfo: {
+    host: 'sathishs-MacBook-Pro.local',
+    port: 27017,
+    version: '8.3.3',
+    gitVersion: '3ef86ea0d67623e3f8299275cd6bd93e5f9454e6'
+  },
+  serverParameters: {
+    internalQueryFacetBufferSizeBytes: 104857600,
+    internalDocumentSourceGroupMaxMemoryBytes: 104857600,
+    internalQueryMaxBlockingSortMemoryUsageBytes: 104857600,
+    internalDocumentSourceSetWindowFieldsMaxMemoryBytes: 104857600,
+    internalQueryFacetMaxOutputDocSizeBytes: 104857600,
+    internalLookupStageIntermediateDocumentMaxSizeBytes: 104857600,
+    internalQueryProhibitBlockingMergeOnMongoS: 0,
+    internalQueryMaxAddToSetBytes: 104857600,
+    internalQueryFrameworkControl: 'trySbeRestricted',
+    internalQueryPlannerIgnoreIndexWithCollationForRegex: 1
+  },
+  ok: 1
+}
+db.products.getIndexes();
+[
+  { v: 2, key: { _id: 1 }, name: '_id_' },
+  { v: 2, key: { category: 1 }, name: 'category_1' }
+]
+db.products.dropIndex("category_1");
+{ nIndexesWas: 2, ok: 1 }
+db.products.getIndexes();
+[ { v: 2, key: { _id: 1 }, name: '_id_' } ]
+db.accounts.insertMany([
+    {
+        accountNo: 101,
+        name: "Arun",
+        balance: 10000
+    },
+    {
+        accountNo: 102,
+        name: "Priya",
+        balance: 5000
+    }
+])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6ab3dfb5a0e53ee4b1c66f0e'),
+    '1': ObjectId('6ab3dfb5a0e53ee4b1c66f0f')
+  }
+}
+db.accounts.find();
+{
+  _id: ObjectId('6ab3dfb5a0e53ee4b1c66f0e'),
+  accountNo: 101,
+  name: 'Arun',
+  balance: 10000
+}
+{
+  _id: ObjectId('6ab3dfb5a0e53ee4b1c66f0f'),
+  accountNo: 102,
+  name: 'Priya',
+  balance: 5000
+}
+const session = db.getMongo().startSession()
+session
+{
+  id: UUID('8ef1d847-0622-4a3e-810f-74209abcaa6d')
+}
+const bankDB = session.getDatabase("ecommerce");
+session.startTransaction()
+bankDB.accounts.updateOne(
+    { accountNo: 101 },
+    { $inc: { balance: -2000 } }
+)
+MongoServerError[IllegalOperation]: Transaction numbers are only allowed on a replica set member or mongos
+session.commitTransaction();
+MongoServerError[IllegalOperation]: Transaction numbers are only allowed on a replica set member or mongos
+session.endSession();
+session.abortTransaction();
+MongoTransactionError: Cannot call abortTransaction after calling commitTransaction
+db.employees.find();
+db.products.find();
+{
+  _id: ObjectId('6ab3cdeba0e53ee4b1c66f04'),
+  productId: 101,
+  name: 'Laptop',
+  category: 'Electronics',
+  brand: 'Dell',
+  price: 65000,
+  stock: 20
+}
+{
+  _id: ObjectId('6ab3cdeba0e53ee4b1c66f05'),
+  productId: 102,
+  name: 'Smartphone',
+  category: 'Electronics',
+  brand: 'Samsung',
+  price: 35000,
+  stock: 50
+}
+{
+  _id: ObjectId('6ab3cdeba0e53ee4b1c66f06'),
+  productId: 103,
+  name: 'Keyboard',
+  category: 'Accessories',
+  brand: 'Logitech',
+  price: 2500,
+  stock: 100
+}
+{
+  _id: ObjectId('6ab3cdeba0e53ee4b1c66f07'),
+  productId: 104,
+  name: 'Mouse',
+  category: 'Accessories',
+  brand: 'Logitech',
+  price: 1200,
+  stock: 80
+}
+{
+  _id: ObjectId('6ab3cdeba0e53ee4b1c66f08'),
+  productId: 105,
+  name: 'Monitor',
+  category: 'Electronics',
+  brand: 'LG',
+  price: 18000,
+  stock: 35
+}
+db.products.find().limit(2);

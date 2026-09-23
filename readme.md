@@ -358,5 +358,129 @@ db.departments.deleteOne(
         department_id: 4
     }
 );
+
+db.createCollection("employees");
+
+db.employees.insertMany([
+    {
+        employee_id: 101,
+        employee_name: "Arun",
+        email: "arun@gmail.com",
+        salary: 65000.00,
+        age: 28,
+        city: "Chennai",
+        department_id: 1,
+        joining_date: "2023-01-15"
+    },
+    {
+        employee_id: 102,
+        employee_name: "Priya",
+        email: "priya@gmail.com",
+        salary: 75000.00,
+        age: 30,
+        city: "Coimbatore",
+        department_id: 1,
+        joining_date: "2022-06-10"
+    },
+    {
+        employee_id: 103,
+        employee_name: "Karthik",
+        email: "karthik@gmail.com",
+        salary: 45000.00,
+        age: 25,
+        city: "Madurai",
+        department_id: 2,
+        joining_date: "2024-02-20"
+    },
+    {
+        employee_id: 104,
+        employee_name: "Meena",
+        email: "meena@gmail.com",
+        salary: 55000.00,
+        age: 32,
+        city: "Bangalore",
+        department_id: 3,
+        joining_date: "2021-10-05"
+    },
+    {
+        employee_id: 105,
+        employee_name: "Vijay",
+        email: "vijay@gmail.com",
+        salary: 40000.00,
+        age: 27,
+        city: "Chennai",
+        department_id: 4,
+        joining_date: "2023-08-11"
+    },
+    {
+        employee_id: 106,
+        employee_name: "Divya",
+        email: "divya@gmail.com",
+        salary: 80000.00,
+        age: 35,
+        city: "Coimbatore",
+        department_id: 1,
+        joining_date: "2020-04-15"
+    },
+    {
+        employee_id: 107,
+        employee_name: "Rahul",
+        email: "rahul@gmail.com",
+        salary: 50000.00,
+        age: 29,
+        city: "Hyderabad",
+        department_id: 4,
+        joining_date: "2022-12-01"
+    },
+    {
+        employee_id: 108,
+        employee_name: "Sneha",
+        email: "sneha@gmail.com",
+        salary: 60000.00,
+        age: 26,
+        city: "Chennai",
+        department_id: null,
+        joining_date: "2024-05-12"
+    }
+]);
+
+// to list all the employees
+db.employees.find();
+
+// to list all the employees in Chennai
+db.employees.find({ city: "Chennai" });
+
+lt -> less than
+gt -> greater than
+eq -> equal to
+ne -> not equal to
+lte -> less than or equal to
+gte -> greater than or equal to
+
+db.employees.find({
+    age: {
+        $gte: 30
+    }
+});
+
+db.employees.find({
+    $and: [
+        {
+            age: {
+                $gte: 30
+            },
+            city: "Coimbatore"
+        }
+    ]
+});
+
+// to sort products by price in descending order
+db.products.find().sort({ price: -1, name: 1 });
+
 ```
 
+Indexing Concepts:
+
+Without index, MongoDB must perform a collection scan (COLLSCAN) to find the matching documents, which can be slow for large collections.
+
+With an index on the queried fields, MongoDB can quickly locate the matching documents using the index, which significantly improves query performance.

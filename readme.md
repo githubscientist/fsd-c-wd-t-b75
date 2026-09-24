@@ -484,3 +484,35 @@ Indexing Concepts:
 Without index, MongoDB must perform a collection scan (COLLSCAN) to find the matching documents, which can be slow for large collections.
 
 With an index on the queried fields, MongoDB can quickly locate the matching documents using the index, which significantly improves query performance.
+
+[x] HTML document structure
+[x] Tags & elements
+[x] Headings, paragraphs & formatting tags
+[x] Forms & input elements
+[x] Lists, tables & semantic tags
+[x] Audio, video & iframe integration
+
+HTML:
+Hyper Text Markup Language
+
+- It is used to create webpages.
+- webpages have content structured using web page elements such as headings, paragraphs, lists, tables, and multimedia content.
+
+<!DOCTYPE html>
+To tell the browser that the document is an HTML5 document.
+
+<html>
+To define the root of an HTML document.
+
+semantic tags:
+
+They define the structure and meaning of the content within an HTML document, making it easier for browsers and search engines to understand the content.
+
+Examples of semantic tags include:
+- `<header>`: Defines the header section of a document or a section.
+- `<nav>`: Defines a container for navigation links.
+- `<main>`: Specifies the main content of a document.
+- `<article>`: Represents an independent piece of content.
+- `<section>`: Defines a section in a document.
+- `<aside>`: Represents content that is tangentially related to the main content.
+- `<footer>`: Defines the footer section of a document or a section.

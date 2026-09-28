@@ -518,14 +518,17 @@ Examples of semantic tags include:
 - `<footer>`: Defines the footer section of a document or a section.
 
 [x] Introduction to CSS
-[ ] Three types of CSS
+[x] Three types of CSS
     - Inline CSS
         - Applied directly within an HTML element using the `style` attribute.
     - Internal CSS
     - External CSS
 [x] Colors, fonts & typography
 [ ] Margin, padding & borders
-[ ] Selectors & specificity
+[x] Selectors & specificity
+    1. Tag/element selector: Selects all elements of a given type.
+    2. Class selector: Selects all elements with a specific class attribute.
+    3. ID selector: Selects a single element with a specific ID attribute.
 [ ] Box model concept
 [ ] Display properties
 

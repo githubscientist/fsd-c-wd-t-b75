@@ -7,46 +7,39 @@
         <title>Box Model</title>
 
         <style>
-            /* box model */
-            /* box properties */
-            /* 
-                content
-                padding
-                border
-                margin
-             */
-            h1 {
-                /* content width and height */
-                width: 500px;
-                height: 50px;
+            li {
+                list-style-type: none;
+                border: 1px solid black;
+                padding: 5px;
+            }
 
-                /* padding */
-                /* top, right, bottom, left */
-                /* padding: 20px; */
-                /* top+bottom left+right */
-                /* padding: 20px 40px; */
-                /* top left+right bottom */
-                /* padding: 20px 30px 40px; */
-                /* top, right, bottom, left */
-                padding: 10px 20px 30px 40px;
+            li:hover {
+                background-color: gray;
+                color: white;
+            }
 
-                /* border */
-                border: 10px solid red;
+            #nav {
+                display: flex;
+                flex-direction: row;
+                /* default */
 
-                /* border-left: 10px solid red; */
+                /* flex-direction: column; */
+                gap: 10px;
 
-                /* margin: 0px; */
-                /* margin */
-                /* margin: 30px; */
-                /* margin: 10px 20px; */
-                /* margin: 10px 20px 30px; */
-                margin: 10px 20px 30px 40px;
+                justify-content: left;
             }
         </style>
     </head>
 
     <body>
-        <h1>Hello, World!</h1>
+        <div>
+            <ul id="nav">
+                <li>Home</li>
+                <li>Courses</li>
+                <li>Contact</li>
+                <li>About Us</li>
+            </ul>
+        </div>
     </body>
 
 </html>

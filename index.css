@@ -1,0 +1,29 @@
+/* external css */
+/* select the html element */
+/* types of selectors */
+/* 
+    1. tag or element selector
+    2. id selector
+    3. class selector
+*/
+
+h2 {
+    /* css ruleset */
+    /* each is a CSS rule */
+    /* each rule has a property and a value */
+    color: green;
+}
+
+#authorID {
+    font-style: italic;
+    font-weight: 550;
+    color: gray;
+}
+
+.smallFont {
+    font-size: small;
+}
+
+.redColor {
+    color: red;
+}

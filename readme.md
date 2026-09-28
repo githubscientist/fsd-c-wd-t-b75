@@ -522,7 +522,9 @@ Examples of semantic tags include:
     - Inline CSS
         - Applied directly within an HTML element using the `style` attribute.
     - Internal CSS
+        - Defined within a `<style>` tag in the `<head>` section of an HTML document.
     - External CSS
+        - Defined in an external `.css` file and linked to the HTML document using the `<link>` tag.
 [x] Colors, fonts & typography
 [ ] Margin, padding & borders
 [x] Selectors & specificity

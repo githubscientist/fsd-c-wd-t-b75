@@ -516,3 +516,19 @@ Examples of semantic tags include:
 - `<section>`: Defines a section in a document.
 - `<aside>`: Represents content that is tangentially related to the main content.
 - `<footer>`: Defines the footer section of a document or a section.
+
+[x] Introduction to CSS
+[ ] Three types of CSS
+    - Inline CSS
+        - Applied directly within an HTML element using the `style` attribute.
+    - Internal CSS
+    - External CSS
+[x] Colors, fonts & typography
+[ ] Margin, padding & borders
+[ ] Selectors & specificity
+[ ] Box model concept
+[ ] Display properties
+
+Introduction to CSS:
+
+CSS (Cascading Style Sheets) is used to style and layout web pages. It allows you to control the appearance of HTML elements, including colors, fonts, spacing, and positioning.

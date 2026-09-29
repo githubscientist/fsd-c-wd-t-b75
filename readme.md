@@ -516,3 +516,13 @@ Examples of semantic tags include:
 - `<section>`: Defines a section in a document.
 - `<aside>`: Represents content that is tangentially related to the main content.
 - `<footer>`: Defines the footer section of a document or a section.
+
+CSS Positioning:
+
+CSS positioning allows you to control the layout and placement of elements on a webpage. The main positioning values are:
+
+- `static`: The default positioning for all elements. Elements are positioned according to the normal flow of the document.
+- `fixed`: The element is positioned relative to the browser window and does not move when the page is scrolled.
+- `sticky`: The element is positioned based on the user's scroll position. It toggles between relative and fixed positioning depending on the scroll position.
+- `relative`: The element is positioned relative to its normal position.
+- `absolute`: The element is positioned relative to its nearest positioned ancestor.

@@ -1,29 +1,48 @@
-/* external css */
-/* select the html element */
-/* types of selectors */
-/* 
-    1. tag or element selector
-    2. id selector
-    3. class selector
-*/
-
-h2 {
-    /* css ruleset */
-    /* each is a CSS rule */
-    /* each rule has a property and a value */
-    color: green;
+/* descendant selector */
+#container>div {
+    border: 1px solid lightgray;
+    padding: 50px;
+    color: white;
 }
 
-#authorID {
-    font-style: italic;
-    font-weight: 550;
-    color: gray;
+#header {
+    background-color: #ffeb3b;
 }
 
-.smallFont {
-    font-size: small;
+#sidebar {
+    background-color: #2196f4;
 }
 
-.redColor {
-    color: red;
+#main {
+    background-color: #f54335;
+}
+
+#nav {
+    background-color: #cedd3a;
+}
+
+#footer {
+    background-color: #ff9801;
+}
+
+#container {
+    display: grid;
+    /* grid-template-columns: auto auto auto; */
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+#header {
+    grid-column: 1 / 4;
+}
+
+#sidebar {
+    grid-row: 2 / 4;
+}
+
+/* #main {
+    grid-column: 2 / 3;
+} */
+
+#footer {
+    grid-column: 2 / 4;
 }

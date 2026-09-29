@@ -4,74 +4,17 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Box Model</title>
-
-        <style>
-            li {
-                list-style-type: none;
-                border: 1px solid black;
-                padding: 10px 30px;
-                /* height: 25px; */
-            }
-
-            li:hover {
-                background-color: gray;
-                color: white;
-            }
-
-            #nav {
-                display: flex;
-                flex-direction: row;
-                /* default */
-
-                /* flex-direction: column; */
-                gap: 5px;
-
-                /* to horizontally center */
-                justify-content: right;
-                /* justify-content: space-between; */
-
-                /* to vertically center */
-                /* align-items: center; */
-            }
-
-            #home,
-            #courses,
-            #contact,
-            #aboutus {
-                flex-grow: 1;
-            }
-
-            /* #home {
-                flex-grow: 2;
-            } */
-
-            #home {
-                order: 1;
-            }
-
-            #aboutus {
-                order: 2;
-            }
-
-            #courses {
-                order: 3;
-            }
-
-            #contact {
-                order: 4;
-            }
-        </style>
+        <title>Grid Layout</title>
+        <link rel="stylesheet" href="./index.css">
     </head>
 
     <body>
-        <div>
-            <ul id="nav">
-                <li id="home">Home</li>
-                <li id="courses">Courses</li>
-                <li id="contact">Contact</li>
-                <li id="aboutus">About Us</li>
-            </ul>
+        <div id="container">
+            <div id="header">Header</div>
+            <div id="sidebar">Sidebar</div>
+            <div id="main">Main Content</div>
+            <div id="nav">Navigation Bar</div>
+            <div id="footer">Footer</div>
         </div>
     </body>
 

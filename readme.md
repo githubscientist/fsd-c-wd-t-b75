@@ -522,7 +522,7 @@ CSS Positioning:
 CSS positioning allows you to control the layout and placement of elements on a webpage. The main positioning values are:
 
 - `static`: The default positioning for all elements. Elements are positioned according to the normal flow of the document.
-- `fixed`: The element is positioned relative to the browser window and does not move when the page is scrolled.
+- `fixed`: The element is positioned relative to the browser window and does not move when the page is scrolled. We can change its position using the `top`, `right`, `bottom`, and `left` properties.
 - `sticky`: The element is positioned based on the user's scroll position. It toggles between relative and fixed positioning depending on the scroll position.
 - `relative`: The element is positioned relative to its normal position.
 - `absolute`: The element is positioned relative to its nearest positioned ancestor.

@@ -1,3 +1,11 @@
 #header {
-    position: static;
+    /* position: fixed; */
+    /* top: 0;
+    right: 0; */
+}
+
+#chat-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
 }

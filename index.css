@@ -13,22 +13,41 @@
 }
 
 .red {
-    background-color: red;
+    /* background-color: red; */
 }
 
 .green {
-    position: relative;
+    position: absolute;
+    /* z-index: -1; */
     left: 50px;
     top: 50px;
 }
 
 .blue {
-    position: relative;
-    left: 100px;
+    /* z-index: 999; */
 }
 
 .red {
-    position: relative;
-    left: 150px;
-    top: -50px;
+    position: absolute;
+    left: 100px;
 }
+
+.smallbox {
+    width: 25px;
+    height: 25px;
+    border: 1px solid black;
+}
+
+/* positioning relative to its normal position */
+.smallbox {
+    position: relative; 
+    left: 50px;
+    top: 50px;
+}
+
+/* positioning from the root element or nearest positioned ancestor */
+/* .smallbox {
+    position: absolute; 
+    left: 50px;
+    top: 50px;
+} */

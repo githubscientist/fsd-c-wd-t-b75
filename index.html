@@ -10,7 +10,8 @@
             li {
                 list-style-type: none;
                 border: 1px solid black;
-                padding: 5px;
+                padding: 10px 30px;
+                /* height: 25px; */
             }
 
             li:hover {
@@ -24,9 +25,41 @@
                 /* default */
 
                 /* flex-direction: column; */
-                gap: 10px;
+                gap: 5px;
 
-                justify-content: left;
+                /* to horizontally center */
+                justify-content: right;
+                /* justify-content: space-between; */
+
+                /* to vertically center */
+                /* align-items: center; */
+            }
+
+            #home,
+            #courses,
+            #contact,
+            #aboutus {
+                flex-grow: 1;
+            }
+
+            /* #home {
+                flex-grow: 2;
+            } */
+
+            #home {
+                order: 1;
+            }
+
+            #aboutus {
+                order: 2;
+            }
+
+            #courses {
+                order: 3;
+            }
+
+            #contact {
+                order: 4;
             }
         </style>
     </head>
@@ -34,10 +67,10 @@
     <body>
         <div>
             <ul id="nav">
-                <li>Home</li>
-                <li>Courses</li>
-                <li>Contact</li>
-                <li>About Us</li>
+                <li id="home">Home</li>
+                <li id="courses">Courses</li>
+                <li id="contact">Contact</li>
+                <li id="aboutus">About Us</li>
             </ul>
         </div>
     </body>

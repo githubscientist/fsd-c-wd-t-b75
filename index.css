@@ -2,10 +2,17 @@
     /* position: fixed; */
     /* top: 0;
     right: 0; */
+    position: sticky;
+    top: 0;
 }
 
 #chat-icon {
     position: fixed;
     bottom: 20px;
     right: 20px;
+}
+
+#header2 {
+    position: sticky;
+    top: 65.920px;
 }

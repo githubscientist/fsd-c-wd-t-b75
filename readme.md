@@ -526,3 +526,28 @@ CSS positioning allows you to control the layout and placement of elements on a 
 - `sticky`: The element is positioned based on the user's scroll position. It toggles between relative and fixed positioning depending on the scroll position.
 - `relative`: The element is positioned relative to its normal position.
 - `absolute`: The element is positioned relative to its nearest positioned ancestor.
+
+Media Queries:
+
+Responsive design allows web pages to adapt to different screen sizes and devices. Media queries are used to apply different styles based on the device's characteristics, such as width, height, and orientation.
+
+Example:
+```css
+@media (max-width: 600px) {
+    body {
+        background-color: lightblue;
+    }
+}
+```
+Framework vs Library:
+
+Library: 
+A library is a collection of pre-written code that developers can use to optimize tasks. It provides specific functionality that can be called upon when needed, but the developer is in control of the flow of the application.
+
+Framework:
+A framework is simply collection of libaries with predefined structure and rules that dictate the flow of the application. It provides a foundation for developers to build upon, often enforcing a specific way to organize and write code.
+
+
+Tailwind CSS:
+
+Tailwind CSS is a utility-first CSS framework that provides low-level utility classes to build custom designs directly in your HTML. It allows developers to rapidly create responsive and modern web interfaces without writing custom CSS from scratch.

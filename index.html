@@ -4,43 +4,39 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Media Queries</title>
-        <link rel="stylesheet" href="./index.css">
-        <link rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu" />
+        <title>Tailwind CSS</title>
+        <style>
+            /* universal selector */
+            /* * {
+                padding: 0;
+                margin: 0;
+            } */
+
+            .Colorgreen {
+                color: green;
+            }
+
+            .ColorRed {
+                color: red;
+            }
+
+            .bgColorYellow {
+                background-color: yellow;
+            }
+
+            .bold {
+                font-weight: bold;
+            }
+
+            .italic {
+                font-style: italic;
+            }
+        </style>
+        <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->
     </head>
 
     <body>
-        <header>
-            <span class="material-symbols-outlined" style="font-size: 36px;" id="navIcon">
-                menu
-            </span>
-            <img src="https://media.swipepages.com/2025/1/5fcde7acf64f9100108c719e/group-1-2x--4-.svg" alt="guvi-logo"
-                width="200px">
-            <nav class="nav">
-                <ul>
-                    <li>
-                        <a href="">LIVE Classes</a>
-                    </li>
-
-                    <li>
-                        <a href="">Courses</a>
-                    </li>
-
-                    <li>
-                        <a href="">Practice</a>
-                    </li>
-
-                    <li>
-                        <a href="">Resources</a>
-                    </li>
-
-                    <li>
-                        <a href="">Our Products</a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
+        <h1 class="bgColorYellow italic ColorRed">Hello World!</h1>
     </body>
 
 </html>

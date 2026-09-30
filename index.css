@@ -1,53 +1,58 @@
-.box {
-    width: 100px;
-    height: 100px;
-    border: 1px solid black;
+.nav>ul>li>a {
+    text-decoration: none;
+    color: black;
 }
 
-.green {
-    background-color: green;
+.nav>ul>li {
+    list-style-type: none;
 }
 
-.blue {
-    background-color: blue;
+.nav>ul {
+    display: flex;
+    gap: 30px;
 }
 
-.red {
-    /* background-color: red; */
+header {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 10px;
 }
 
-.green {
-    position: absolute;
-    /* z-index: -1; */
-    left: 50px;
-    top: 50px;
+#navIcon {
+    display: none;
 }
 
-.blue {
-    /* z-index: 999; */
-}
+/* default: 991px or less
+    navIcon display
+    navbar hidden
+*/
 
-.red {
-    position: absolute;
-    left: 100px;
-}
+/* @media (min-width: 992px) and (max-width:1024px) { */
 
-.smallbox {
-    width: 25px;
-    height: 25px;
-    border: 1px solid black;
-}
+/* 992px or more
+    navIcon hidden
+    navBar display
+*/
+/* @media (min-width: 992px){
+    .nav {
+        display: block;
+    }
 
-/* positioning relative to its normal position */
-.smallbox {
-    position: relative; 
-    left: 50px;
-    top: 50px;
-}
-
-/* positioning from the root element or nearest positioned ancestor */
-/* .smallbox {
-    position: absolute; 
-    left: 50px;
-    top: 50px;
+    #navIcon {
+        display: none;
+    }
 } */
+
+/* @media (max-width: 991px) and (orientation: landscape ){ */
+/* @media (max-width: 991px) and (orientation: portrait ){ */
+
+@media (max-width: 991px){
+    #navIcon {
+        display: block;
+    }
+
+    .nav {
+        display: none;
+    }
+}

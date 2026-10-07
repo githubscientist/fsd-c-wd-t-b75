@@ -513,4 +513,294 @@
 
 // console.log(numbers);
 
-let numbers = [3, 6, 2, 4, 1, 5];
+// array traversal
+// let numbers = [3, 6, 2, 4, 1, 5];
+
+// for loop
+// run a loop that executes for 6 times
+// for (let i = 0; i < numbers.length; i++){
+//     console.log(numbers[i]);
+// }
+
+// while loop
+// let i = 0;
+// while ( i < numbers.length){
+//     console.log(numbers[i]);
+//     i++;
+// }
+
+// do...while loop
+// let i = 0;
+// do {
+//     console.log(numbers[i]);
+//     i++;
+// } while (i < numbers.length);
+
+// for (let i = 0; i < numbers.length; i++){
+//     console.log(numbers[i]);
+// }
+
+// for...in loop
+// for (let i in numbers){
+//     console.log(numbers[i]);
+// }
+
+// for...of loop
+// for (let num of numbers){
+//     console.log(num);
+// }
+
+// let - block scoped
+// var - function scoped
+// for (var i = 1; i <= 10; i++);
+// console.log(i);
+
+// let numbers = [3, 6, 2, 4, 1, 5];
+
+// numbers.forEach(print);
+
+// function print(value) {
+//     console.log(value);
+// }
+
+// let numbers = [3, 6, 2, 4, 1, 5];
+
+// function calc(x, y, fun) {
+//     return fun(x, y);
+// }
+
+// // add, sub, mul, div -> callback functions
+// function add(x, y) {
+//     return x + y;
+// }
+
+// function sub(x, y) {
+//     return x - y;
+// }
+
+// function mul(x, y) {
+//     return x * y;
+// }
+
+// function div(x, y) {
+//     return x / y;
+// }
+
+// console.log(
+//     calc(5, 6, div)
+// );
+
+// loop -> break
+// function -> return
+
+// recursive function
+// let sayHello = function (times) {
+//     if (times == 0) return;
+
+//     console.log('hello');
+//     times--;
+//     sayHello(times);
+// }
+
+// sayHello(3);
+
+/*
+    sayHello(3)
+        - times = 3
+        - print hello
+        - times = 2
+        - sayHello(2)
+            - times = 2
+            - print hello
+            - times = 1
+            - sayHello(1)
+                - times = 1
+                - print hello
+                - times = 0
+                - sayHello(0)
+                    - times = 0
+                    - return
+*/
+
+// let sayHello = function (times, i) {
+//     if (times == i) return;
+
+//     console.log('hello');
+//     i++;
+//     sayHello(times, i);
+// }
+
+// sayHello(3, 0);
+
+
+// let numbers = [3, 6, 2, 4, 1, 5];
+
+// numbers.forEach(print);
+
+// function print(value, index, array) {
+//     console.log(value, index, array);
+// }
+
+// let numbers = [3, 6, 2, 4, 1, 5];
+
+// numbers.forEach(print);
+
+// function print(value, index, array) {
+//     console.log(value, index, array);
+// }
+
+// let numbers = [3, 6, 2, 4, 1, 5];
+
+// numbers.forEach(print);
+
+// function print(value) {
+//     console.log(value);
+// }
+
+// let numbers = [3, 6, 2, 4, 1, 5];
+
+// let print = function (value) {
+//     console.log(value);
+// }
+
+// numbers.forEach(print);
+
+
+// let numbers = [3, 6, 2, 4, 1, 5];
+
+// numbers.forEach(function (value) {
+//     console.log(value);
+// });
+
+
+// let numbers = [3, 6, 2, 4, 1, 5];
+
+// numbers.forEach((value) => {
+//     console.log(value);
+// });
+
+
+// let numbers = [3, 6, 2, 4, 1, 5];
+
+// numbers.forEach(value => console.log(value));
+
+// let numbers = [3, 6, 2, 4, 1, 5, 100, 101, 20, 22, 24, 465];
+
+// numbers.sort(); // dictionary order or chronological order or ascii order
+
+// console.log(numbers);
+
+// let fruits = ['orange', 'pomegranate', 'apple', 'mango', 'banana', 'watermelon', 'berries'];
+
+// fruits.sort();
+
+// console.log(fruits);
+
+// let numbers = [3, 6, 2, 4, 1, 5, 100, 101, 20, 22, 24, 465];
+
+// numbers.sort(sorter);
+
+// function sorter(a, b) {
+//     if (a < b) {
+//         return -1;
+//     } else if (a == b) {
+//         return 0;
+//     } else {
+//         return 1;
+//     }
+// }
+
+// console.log(numbers);
+
+// let numbers = [3, 6, 2, 4, 1, 5, 100, 101, 20, 22, 24, 465];
+
+// numbers.sort(sorter);
+
+// function sorter(a, b) {
+//     if (a > b) {
+//         return -1;
+//     } else if (a == b) {
+//         return 0;
+//     } else {
+//         return 1;
+//     }
+// }
+
+// console.log(numbers);
+
+// let numbers = [3, 6, 2, 4, 1, 5, 100, 101, 20, 22, 24, 465];
+
+// numbers.sort((a, b) => a - b);
+
+// console.log(numbers);
+
+// map, reduce, filter
+// let numbers = [4, 2, 6, 1, 5, 3];
+
+// // squares = [16, 4, 36, 1, 25, 9]
+
+// // without map method
+
+// // create an empty array called squares
+// let squares = [];
+
+// // traverse the numbers array
+// for (let i = 0; i < numbers.length; i++){
+//     // push the square of numbers[i] into squares array
+//     squares.push(numbers[i] ** 2);
+// }
+
+// console.log(squares);
+
+// let numbers = [4, 2, 6, 1, 5, 3];
+// // squares = [16, 4, 36, 1, 25, 9]
+
+// // with map method
+
+// // create an empty array called squares
+// let squares = numbers.map(squarer);
+
+// function squarer(value) {
+//     return value**2;
+// }
+
+// console.log(squares);
+
+// let numbers = [4, 2, 6, 1, 5, 3];
+// // squares = [16, 4, 36, 1, 25, 9]
+
+// // with map method
+// // create an empty array called squares
+// console.log(numbers.map(value => value**2));
+
+// // squares = [16, 4, 36, 1, 25, 9]
+// let numbers = [4, 2, 6, 1, 5, 3];
+
+// // with map method
+// // create an empty array called squares
+// let squares = numbers.map(squarer);
+
+// function squarer(value) {
+//     return value**2;
+// }
+
+// console.log(squares);
+
+// let numbers = [4, 2, 6, 1, 5, 3];
+
+// // filter method
+// // create an empty array called squares
+// let evenNumbers = numbers.filter(evenFilter);
+
+// function evenFilter(value) {
+//     // 4, 2, 6, 1, 5, 3
+//     if (value % 2 != 0) {
+//         return true;
+//     } 
+// }
+
+// console.log(evenNumbers);
+
+// let numbers = [4, 2, 6, 1, 5, 3];
+// // filter method
+// console.log(numbers.filter(value => value % 2 == 0));

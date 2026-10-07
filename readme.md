@@ -551,3 +551,29 @@ A framework is simply collection of libaries with predefined structure and rules
 Tailwind CSS:
 
 Tailwind CSS is a utility-first CSS framework that provides low-level utility classes to build custom designs directly in your HTML. It allows developers to rapidly create responsive and modern web interfaces without writing custom CSS from scratch.
+
+JavaScript:
+
+JavaScript is a versatile programming language primarily used for adding interactivity and dynamic behavior to web pages. 
+
+Static Web Pages:
+
+Static web pages are web pages with fixed content that does not change dynamically. They are typically written in HTML and CSS and are served to the user exactly as stored on the server. Static web pages are simple, fast, and easy to deploy but lack interactivity and dynamic content.
+
+Dynamic Web Pages:
+
+Dynamic web pages are web pages that can display different content and provide interactive features based on user input or other factors. They are typically generated on the server side using programming languages like JavaScript, PHP, or Python, and can interact with databases to fetch and display data dynamically. Dynamic web pages offer a more personalized and interactive user experience compared to static web pages.
+
+We can use Javascript either in:
+    - Browser
+    - Server (using Node.js)
+
+JavaScript Engines:
+
+A JavaScript engine is a program or interpreter that executes JavaScript code. Popular JavaScript engines include:
+- V8: Developed by Google, used in Chrome and Node.js.
+- SpiderMonkey: Developed by Mozilla, used in Firefox.
+- JavaScriptCore: Developed by Apple, used in Safari.
+- ChakraCore: Developed by Microsoft, used in the Edge browser.
+
+Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine that allows developers to run JavaScript on the server side. It is commonly used for building scalable and high-performance web applications.

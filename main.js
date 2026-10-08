@@ -804,3 +804,159 @@
 // let numbers = [4, 2, 6, 1, 5, 3];
 // // filter method
 // console.log(numbers.filter(value => value % 2 == 0));
+
+// let numbers = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+/*
+    prime numbers:
+        the number which are only divisible by 1 and itself.
+
+    6 
+        divisors:
+        6%2 yes
+        6%3 yes
+        6%4 no
+        6%5 no
+
+    factors of 6 are 1, 2, 3, 6
+    not a prime number
+
+    11
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+        factors = [1, 11]
+
+        prime number
+*/
+
+// return true, if the number is prime number
+// let numbers = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+
+// console.log(numbers.filter(number => {
+//     for (let divisor = 2; divisor < number; divisor++){
+//         if (number % divisor == 0) return false;
+//     }
+
+//     return true;
+// }));
+
+// let numbers = [1, 2, 3, 4, 5, 6];
+
+// // console.log(numbers.map(number => number ** 2));
+
+// // console.log(numbers.filter(number => number >= 3));
+
+// // console.log(numbers.reduce((pv, cv) => pv + cv));
+
+// function reducer(previousValue, currentValue) {
+//     console.log(previousValue, currentValue);
+//     return previousValue + currentValue;
+// }
+
+// console.log(numbers.reduce(reducer));
+
+
+// find the maximum number
+// let numbers = [4, 7, 2, 3, 8, 1, 5, 6];
+
+// function maxi(previousValue, currentValue) {
+//     if (previousValue > currentValue) return previousValue;
+//     else return currentValue;
+// }
+
+// console.log(numbers.reduce(maxi));
+
+// problem: I need the values in an array or an object in individual variables
+// destructuring
+// let details = [56, 'prakash', 25, 'developer'];
+
+// let id = details[0];
+// let name = details[1];
+// let age = details[2];
+// let profession = details[3];
+
+// console.log(id, name, age, profession);
+
+// let details = [56, 'prakash', 25, 'developer'];
+
+// let [id, name, age, profession] = details;
+
+// console.log(id, name, age, profession);
+
+
+// let details = {
+//     id: 56,
+//     name: 'prakash',
+//     age: 25,
+//     profession: 'developer'
+// };
+
+// let id = details.id;
+// let name = details.name;
+// let age = details.age;
+// let profession = details.profession;
+
+// console.log(id, name, age, profession);
+
+// let details = {
+//     id: 56,
+//     name: 'prakash',
+//     age: 25,
+//     profession: 'developer'
+// };
+
+// let {
+//     id:rollnumber, name, age, profession
+// } = details;
+
+// console.log(rollnumber, name, age, profession);
+
+// function fun({ hobbies }) {
+//     console.log(hobbies);
+// }
+
+// let details = {
+//     id: 56,
+//     name: 'prakash',
+//     age: 25,
+//     profession: 'developer',
+//     hobbies: ['cooking', 'driving', 'fishing']
+// };
+
+// fun(details);
+
+// console.log(details.hobbies);
+// console.log(details["hobbies"]);
+
+// console.log(details.hobbies[0]);
+
+// spread operator (...)
+// let numbers = [1, 2, 3];
+
+// // ...numbers = 1, 2, 3
+// // console.log(...numbers);
+// // console.log(1, 2, 3);
+// let colours = ['green', 'red', 'yellow'];
+
+// let mixed = [
+//     ...colours,
+//     4, 5, 6,
+//     ...numbers,
+// ];
+
+// // let mixed = [
+// //     numbers,
+// //     colours
+// // ];
+
+// console.log(mixed);
+
+// java: varargs, javascript: rest
+// ...
+
+// spread => ...
+// rest => ...
+
+// function add(...rest) {
+//     console.log(rest);
+// }
+
+// add(5);

@@ -577,3 +577,7 @@ A JavaScript engine is a program or interpreter that executes JavaScript code. P
 - ChakraCore: Developed by Microsoft, used in the Edge browser.
 
 Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine that allows developers to run JavaScript on the server side. It is commonly used for building scalable and high-performance web applications.
+
+DOM Manipulation:
+
+DOM manipulation refers to the process of using JavaScript to interact with and modify the Document Object Model (DOM) of a web page. The DOM represents the structure of a web page as a tree of objects, allowing developers to dynamically change content, structure, and styles.

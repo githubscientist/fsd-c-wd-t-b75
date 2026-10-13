@@ -1,13 +1,9 @@
-// console.log(window.location.href);
-// // http://127.0.0.1:3000/index.html?vscode-livepreview=true
-// // window.location.href = 'https://www.google.com';
+// external js
+let firstInput = document.getElementById('firstInput');
+let secondInput = document.getElementsByClassName('secondInput');
+let result = document.getElementById('result');
 
-// console.log(document.body);
-
-// console.log(document.getElementById("header"));
-let header = document.getElementById("header");
-
-// console.log(header.textContent);
-
-header.textContent = 'Welcome to DOM!';
-header.style.color = 'red';
+function calculateSum() {
+    let sum = parseInt(firstInput.value) + parseInt(secondInput[0].value);
+    result.value = sum;
+}

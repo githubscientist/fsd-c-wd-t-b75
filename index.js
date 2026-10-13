@@ -1,1 +1,1 @@
-console.log(document.getElementsByTagName('h1')[0].textContent);
+console.log(document.getElementsByName('hello'));

@@ -1,1 +1,1 @@
-console.log(document.querySelector('#hello'));
+console.log(document.querySelectorAll('.hello'));

@@ -1,7 +1,9 @@
-let btnClick = document.querySelector('#btnClick');
+let inputBox = document.querySelector('#inputBox');
 
-btnClick.addEventListener('click', fun);
+inputBox.addEventListener('keydown', keyboardFun);
 
-function fun() {
-    console.log('button clicked');
+function keyboardFun(event) {
+    if (event.ctrlKey && event.key == 's') {
+        console.log('file saved!');
+    }
 }

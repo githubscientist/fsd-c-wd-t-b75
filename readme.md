@@ -581,3 +581,19 @@ Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine that allo
 DOM Manipulation:
 
 DOM manipulation refers to the process of using JavaScript to interact with and modify the Document Object Model (DOM) of a web page. The DOM represents the structure of a web page as a tree of objects, allowing developers to dynamically change content, structure, and styles.
+
+Asynchronous JavaScript:
+
+First let's understand what asynchronous and synchronous means:
+
+- Synchronous: In synchronous execution, tasks are performed one after the other, and each task must complete before the next one begins. This can lead to blocking behavior if a task takes a long time to finish.
+- Asynchronous: In asynchronous execution, tasks can be performed independently of the main program flow, allowing other tasks to continue running without waiting for the previous ones to complete. This helps in avoiding blocking and improves the responsiveness of applications.
+
+Normally, JavaScript executes code synchronously, meaning it runs one statement at a time in the order they appear. However, it provides mechanisms like callbacks, promises, and async/await to handle asynchronous operations, allowing developers to perform tasks such as fetching data from a server or reading files without blocking the main execution thread.
+
+- Callbacks: Functions passed as arguments to other functions, executed after the completion of an asynchronous operation.
+- Promises: Objects representing the eventual completion or failure of an asynchronous operation, providing a cleaner way to handle asynchronous code compared to callbacks.
+
+constructor: A special method used to initialize objects created with a class. It is called automatically when a new instance of the class is created and can be used to set initial values for the object's properties.
+
+Promises: Objects representing the eventual completion or failure of an asynchronous operation, providing a cleaner way to handle asynchronous code compared to callbacks. They have three states: pending, fulfilled, and rejected. Promises can be chained using `.then()` for handling success and `.catch()` for handling errors.

@@ -1,25 +1,22 @@
-// promise -> resulting object of eventually completing or failing asynchronous function
-let promise = new Promise((resolve, reject) => {
-    let x = 5;
-    if (x >= 5) {
-        // async function completion
-        resolve('success');
-    } else {
-        // failure
-        reject();
-    }
-});
-
-console.log(promise);
-
-promise
-    .then((data) => {
-        console.log('promise resolved!');
-        return data;
+// http://www.omdbapi.com/?t=avengers&apikey=488f0688
+// built-in function
+fetch('http://www.omdbapi.com/?t=avengers&apikey=488f0688')
+    .then((response) => {
+        // success callback
+        return response.json();
     })
     .then((data) => {
         console.log(data);
+
+        // what we want to do with the data
+        let title = document.getElementById('title');
+        title.textContent = data.Title;
+
+        let image = document.getElementById('image');
+        image.setAttribute('src', data.Poster);
+        image.style.width = '200px';
     })
     .catch(() => {
-        console.log('promise rejected!');
+        // failure callback
+        console.log('Error getting the movie data');
     });

@@ -597,3 +597,9 @@ Normally, JavaScript executes code synchronously, meaning it runs one statement 
 constructor: A special method used to initialize objects created with a class. It is called automatically when a new instance of the class is created and can be used to set initial values for the object's properties.
 
 Promises: Objects representing the eventual completion or failure of an asynchronous operation, providing a cleaner way to handle asynchronous code compared to callbacks. They have three states: pending, fulfilled, and rejected. Promises can be chained using `.then()` for handling success and `.catch()` for handling errors.
+
+Fetch:
+
+The `fetch` function is used to make network requests and retrieve resources from a server. It returns a promise that resolves to the response of the request. 
+
+Fetch is built on promises, making it easier to work with asynchronous network requests compared to older techniques like XMLHttpRequest. It allows developers to handle responses and errors using `.then()` and `.catch()` methods.

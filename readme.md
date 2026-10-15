@@ -612,3 +612,21 @@ JSON data is represented as key-value pairs, similar to JavaScript objects. It s
 
 promiseObject.json()
     - Converts the response of a fetch request into a JavaScript object by parsing the JSON data.
+
+Browser's Memory:
+
+The browser's memory refers to the storage space allocated by the web browser to store data temporarily while a web page is being loaded and interacted with. This includes memory for JavaScript objects, DOM elements, and other resources required for the web page to function properly.
+
+1. LocalStorage
+2. SessionStorage
+3. Cookies
+
+- LocalStorage: 
+    - Provides persistent storage for key-value pairs that remain even after the browser is closed.
+    - We can store upto 5-10 MB of data depending on the browser.
+- SessionStorage: 
+    -Provides temporary storage for key-value pairs that are cleared when the browser session ends.
+    - We can store upto 5-10 MB of data depending on the browser.
+- Cookies: 
+    - Small pieces of data stored by the browser that can be sent to the server with each request, often used for session management and tracking.
+    - We can store upto 4 KB of data depending on the browser.

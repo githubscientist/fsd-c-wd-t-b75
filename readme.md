@@ -603,3 +603,12 @@ Fetch:
 The `fetch` function is used to make network requests and retrieve resources from a server. It returns a promise that resolves to the response of the request. 
 
 Fetch is built on promises, making it easier to work with asynchronous network requests compared to older techniques like XMLHttpRequest. It allows developers to handle responses and errors using `.then()` and `.catch()` methods.
+
+JSON:
+
+JavaScript Object Notation (JSON) is a lightweight data interchange format that is easy for humans to read and write and easy for machines to parse and generate. JSON is commonly used for transmitting data between a server and a web application.
+
+JSON data is represented as key-value pairs, similar to JavaScript objects. It supports various data types, including strings, numbers, booleans, arrays, and nested objects. JSON is widely used in web development for exchanging data between clients and servers, and it can be easily parsed and generated using JavaScript's built-in `JSON` object methods like `JSON.parse()` and `JSON.stringify()`.
+
+promiseObject.json()
+    - Converts the response of a fetch request into a JavaScript object by parsing the JSON data.
